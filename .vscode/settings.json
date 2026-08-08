@@ -1,0 +1,7 @@
+{
+  "scm.alwaysShowRepositories": true,
+  "gitlens.views.scm.grouped.hiddenViews": {
+    "repositories": false
+  },
+  "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false
+}
