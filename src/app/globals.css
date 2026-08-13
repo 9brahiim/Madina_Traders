@@ -1,22 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --green-deep:  #071A0E;
-  --green-base:  #0A2A1A;
-  --green-mid:   #0F3D25;
-  --green-light: #1A5C38;
-  --gold:        #C9A84C;
-  --gold-light:  #E8D5A3;
-  --gold-dim:    #8B7035;
-  --cream:       #F5F0E8;
-  --muted:       #8C978F;
+  --green-deep: #071a0e;
+  --green-base: #0a2a1a;
+  --green-mid: #0f3d25;
+  --green-light: #1a5c38;
+  --gold: #c9a84c;
+  --gold-light: #e8d5a3;
+  --gold-dim: #8b7035;
+  --cream: #f5f0e8;
+  --muted: #8c978f;
 
   /* Royal gold, scented with green — used on every section below a hero banner */
-  --gold-bg:      #B89F34;
-  --gold-bg-soft: #C8A836;
-  --gold-bg-deep: #9D8F32;
-  --ink:          #07190D;
-  --ink-muted:    #223220;
+  --gold-bg: #d4af37;
+  --gold-bg-soft: #e6c75b;
+  --gold-bg-deep: #b8922e;
+  --ink: #07190d;
+  --ink-muted: #223220;
+
+  /* Fine grain used to break up the flat gold fill — brushed-metal feel, static (no animation cost) */
+  --gold-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
 
   --background: var(--green-deep);
   --foreground: var(--cream);
@@ -39,8 +42,8 @@
   --color-ink-muted: var(--ink-muted);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-display: 'Cormorant Garamond', serif;
-  --font-sans: 'Inter', sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
 }
 
 * {
@@ -54,17 +57,26 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 300;
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--green-deep); }
-::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--green-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dim);
+  border-radius: 2px;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
@@ -72,6 +84,72 @@ body {
 }
 
 @keyframes wa-pulse {
-  0%, 100% { box-shadow: 0 8px 32px rgba(37,211,102,0.35); }
-  50% { box-shadow: 0 8px 48px rgba(37,211,102,0.6); }
+  0%,
+  100% {
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.35);
+  }
+  50% {
+    box-shadow: 0 8px 48px rgba(37, 211, 102, 0.6);
+  }
+}
+
+/* ============================================================
+   GOLD SURFACE — bright, shiny "actual gold" background used on
+   every section below a hero banner.
+
+   Fully static — no animation, no pseudo-elements, nothing that
+   moves or repaints on a loop. Every "shine" and "green scent" cue
+   is baked directly into the gradient itself and painted once:
+
+   - A soft white gleam across the top, like light catching the
+     top edge of a gold bar/frame — this is the "shiny" part.
+   - A warm-to-bright-to-warm diagonal sweep in the base gradient
+     for a brushed-metal, non-flat look.
+   - Green glows tucked into two opposite corners — the "scent of
+     green", as a placed accent rather than a flat tint or motion.
+   - A very fine static grain for texture (no shimmer, just depth).
+   ============================================================ */
+.gold-surface,
+.gold-surface-soft,
+.gold-surface-deep {
+  position: relative;
+  background-color: var(--gs-base);
+  background-image: radial-gradient(
+      ellipse 70% 40% at 50% -8%,
+      rgba(255, 255, 255, 0.4),
+      transparent 55%
+    ),
+    radial-gradient(circle at 2% -4%, rgba(26, 92, 56, 0.38), transparent 40%),
+    radial-gradient(
+      circle at 100% 104%,
+      rgba(15, 61, 37, 0.32),
+      transparent 45%
+    ),
+    linear-gradient(
+      120deg,
+      var(--gs-deep) 0%,
+      var(--gs-soft) 30%,
+      var(--gs-base) 50%,
+      var(--gs-soft) 70%,
+      var(--gs-deep) 100%
+    ),
+    var(--gold-noise);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 160px 160px;
+  background-blend-mode: normal, normal, normal, normal, overlay;
+}
+
+.gold-surface {
+  --gs-deep: #a9862b;
+  --gs-base: var(--gold-bg);
+  --gs-soft: var(--gold-bg-soft);
+}
+.gold-surface-soft {
+  --gs-deep: var(--gold-bg);
+  --gs-base: var(--gold-bg-soft);
+  --gs-soft: #f2da84;
+}
+.gold-surface-deep {
+  --gs-deep: #8c6f22;
+  --gs-base: var(--gold-bg-deep);
+  --gs-soft: var(--gold-bg);
 }

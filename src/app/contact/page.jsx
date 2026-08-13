@@ -83,13 +83,14 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-1 gap-16 bg-gold-bg px-6 py-16 md:grid-cols-2 md:px-20">
+      <section className="grid grid-cols-1 gap-16 gold-surface px-6 py-16 md:grid-cols-2 md:px-20">
         {/* Contact info */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="relative z-10"
         >
           <h2 className="font-display text-4xl font-light text-ink mb-8">
             Find <em className="italic text-green-mid">Us</em>
@@ -168,6 +169,7 @@ export default function ContactPage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="relative z-10"
         >
           <div className="rounded-sm border border-gold/15 bg-green-base p-8">
             <div

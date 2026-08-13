@@ -88,8 +88,8 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="bg-gold-bg px-6 py-20 md:px-20">
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
+      <section className="gold-surface px-6 py-20 md:px-20">
+        <div className="relative z-10 grid grid-cols-1 gap-16 md:grid-cols-2">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -147,13 +147,13 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="border-t border-ink/10 bg-gold-bg px-6 py-20 md:px-20">
+      <section className="border-t border-ink/10 gold-surface px-6 py-20 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-14 text-center"
+          className="relative z-10 mb-14 text-center"
         >
           <div className="mb-3 flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
             <span className="h-px w-6 bg-green-mid" /> Our Journey{" "}
@@ -163,7 +163,7 @@ export default function AboutPage() {
             15 Years of <em className="italic text-green-mid">Excellence</em>
           </h2>
         </motion.div>
-        <div className="relative mx-auto max-w-2xl">
+        <div className="relative z-10 mx-auto max-w-2xl">
           <div className="absolute left-[19px] top-0 h-full w-px bg-ink/20 md:left-1/2" />
           {timeline.map((t, i) => (
             <motion.div
@@ -231,13 +231,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA strip */}
-      <section className="border-t border-ink/10 bg-gold-bg-deep px-6 py-16 md:px-20">
+      <section className="border-t border-ink/10 gold-surface-deep px-6 py-16 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex flex-col items-center gap-6 text-center"
+          className="relative z-10 flex flex-col items-center gap-6 text-center"
         >
           <h2 className="font-display text-4xl font-light text-ink">
             Come Visit Our <em className="italic text-green-mid">Showroom</em>
