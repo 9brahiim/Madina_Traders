@@ -105,7 +105,10 @@ export default function Footer() {
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </SocialIcon>
-            <SocialIcon href="#" aria-label="Instagram">
+            <SocialIcon
+              href="https://www.instagram.com/_madina_traders_?igsh=ZzR6MHBlNGhlZ3k2&utm_source=qr"
+              aria-label="Instagram"
+            >
               <svg
                 width="14"
                 height="14"
@@ -134,7 +137,7 @@ export default function Footer() {
 
         <FooterCol title="Products" links={productLinks} />
         <FooterCol title="Company" links={companyLinks} />
-        <FooterCol title="Regions Served" links={regions.slice(0, 6)} />
+        <FooterCol title="Regions Served" links={regions.slice(0, 8)} />
       </div>
 
       {/* Bottom bar */}

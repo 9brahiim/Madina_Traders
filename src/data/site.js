@@ -6,6 +6,7 @@ export const regions = [
   "Rae Bareli",
   "Sultanpur",
   "Hardoi",
+  "Ayodhya",
 ];
 
 export const categories = [
