@@ -126,6 +126,10 @@ export default function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Prevent scrolling behind the loader while it's showing
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     // Advance phase every DOOR_DURATION ms
     const timers = doors.map((_, i) =>
       setTimeout(() => setPhase(i), i * DOOR_DURATION)
@@ -151,6 +155,7 @@ export default function LoadingScreen({ onComplete }) {
       timers.forEach(clearTimeout);
       clearInterval(progressTimer);
       clearTimeout(doneTimer);
+      document.body.style.overflow = prevOverflow;
     };
   }, [onComplete]);
 
