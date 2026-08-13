@@ -18,13 +18,13 @@ const iconPaths = [
 
 export default function WhyUs() {
   return (
-    <section className="border-t border-ink/10 bg-gold-bg px-6 py-24 md:px-20 md:py-28">
+    <section className="border-t border-ink/10 gold-surface px-6 py-24 md:px-20 md:py-28">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.7 }}
-        className="text-center"
+        className="relative z-10 text-center"
       >
         <div className="mb-4 flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
           <span className="h-px w-6 bg-green-mid" />
@@ -36,7 +36,7 @@ export default function WhyUs() {
         </h2>
       </motion.div>
 
-      <div className="mt-14 grid grid-cols-1 border border-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="relative z-10 mt-14 grid grid-cols-1 border border-ink/10 sm:grid-cols-2 lg:grid-cols-4">
         {whyUs.map((item, i) => (
           <motion.div
             key={item.title}

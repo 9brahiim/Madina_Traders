@@ -38,12 +38,12 @@ export default function Marquee() {
 
   return (
     <div
-      className="overflow-hidden border-y border-ink/[0.12] bg-gold-bg-deep py-5"
+      className="overflow-hidden border-y border-ink/[0.12] gold-surface-deep py-5"
       aria-hidden="true"
     >
       <div
         ref={trackRef}
-        className="flex w-max"
+        className="relative z-10 flex w-max"
         style={{ willChange: "transform" }}
       >
         {items.map((r, i) => (

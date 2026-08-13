@@ -6,13 +6,13 @@ import { useModal } from "@/components/ui/ModalProvider";
 
 export function Features() {
   return (
-    <section className="border-t border-ink/10 bg-gold-bg px-6 py-24 md:px-20 md:py-28">
+    <section className="border-t border-ink/10 gold-surface px-6 py-24 md:px-20 md:py-28">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.7 }}
-        className="text-center"
+        className="relative z-10 text-center"
       >
         <div className="mb-4 flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
           <span className="h-px w-6 bg-green-mid" />
@@ -24,7 +24,7 @@ export function Features() {
         </h2>
       </motion.div>
 
-      <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+      <div className="relative z-10 mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
         {features.map((f, i) => (
           <motion.div
             key={f.label}
@@ -32,7 +32,7 @@ export function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: i * 0.07 }}
-            className="group flex flex-col items-center gap-4 rounded-sm border border-ink/[0.12] px-4 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-ink/30 hover:bg-green-mid/10"
+            className="group flex flex-col items-center gap-4 rounded-sm border border-gold/20 bg-green-mid px-4 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-green-base"
           >
             {/* Colored SVG icon rendered from string */}
             <div
@@ -40,7 +40,7 @@ export function Features() {
               style={{ color: f.color }}
               dangerouslySetInnerHTML={{ __html: f.icon }}
             />
-            <div className="text-[9px] uppercase leading-[1.5] tracking-[0.18em] text-ink-muted">
+            <div className="text-[9px] uppercase leading-[1.5] tracking-[0.18em] text-cream/70">
               {f.label}
             </div>
           </motion.div>
@@ -55,13 +55,14 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="grid grid-cols-1 gap-16 border-t border-ink/15 bg-gold-bg-deep px-6 py-24 md:grid-cols-2 md:gap-20 md:px-20 md:py-28"
+      className="grid grid-cols-1 gap-16 border-t border-ink/15 gold-surface-deep px-6 py-24 md:grid-cols-2 md:gap-20 md:px-20 md:py-28"
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7 }}
+        className="relative z-10"
       >
         <div className="mb-4 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
           <span className="h-px w-6 bg-green-mid" />
@@ -106,7 +107,7 @@ export function CTA() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, delay: 0.15 }}
-        className="flex flex-col gap-7"
+        className="relative z-10 flex flex-col gap-7"
       >
         <ContactRow
           label="Showroom"

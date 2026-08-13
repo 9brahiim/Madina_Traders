@@ -14,7 +14,7 @@ export default function ProductCategories() {
   return (
     <section
       id="products"
-      className="bg-gold-bg-soft px-6 py-24 md:px-20 md:py-28"
+      className="gold-surface-soft px-6 py-24 md:px-20 md:py-28"
     >
       {/* Header */}
       <motion.div
@@ -22,7 +22,7 @@ export default function ProductCategories() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7 }}
-        className="mb-16 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end"
+        className="relative z-10 mb-16 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end"
       >
         <div>
           <div className="mb-4 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
@@ -52,7 +52,7 @@ export default function ProductCategories() {
       </motion.div>
 
       {/* Cards — each one matches the Aceternity demo structure exactly */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-3">
         {categories.map((cat, i) => (
           <motion.div
             key={cat.id}
