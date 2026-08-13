@@ -38,7 +38,7 @@ export default function Marquee() {
 
   return (
     <div
-      className="overflow-hidden border-y border-gold/[0.15] bg-green-deep py-5"
+      className="overflow-hidden border-y border-ink/[0.12] bg-gold-bg-deep py-5"
       aria-hidden="true"
     >
       <div
@@ -57,7 +57,7 @@ export default function Marquee() {
                 fontSize: "12px",
                 textTransform: "uppercase",
                 letterSpacing: "0.28em",
-                color: "#7A8C82",
+                color: "#223220",
               }}
             >
               {r}
@@ -67,7 +67,7 @@ export default function Marquee() {
                 width: 5,
                 height: 5,
                 borderRadius: "50%",
-                background: "rgba(201,168,76,0.5)",
+                background: "rgba(7,25,13,0.45)",
                 display: "inline-block",
                 flexShrink: 0,
               }}

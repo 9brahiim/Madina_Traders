@@ -88,7 +88,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="px-6 py-20 md:px-20">
+      <section className="bg-gold-bg px-6 py-20 md:px-20">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
           <motion.div
             variants={fadeUp}
@@ -96,16 +96,16 @@ export default function AboutPage() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-4xl font-light text-white">
-              Who We <em className="italic text-gold-light">Are</em>
+            <h2 className="font-display text-4xl font-light text-ink">
+              Who We <em className="italic text-green-mid">Are</em>
             </h2>
-            <p className="mt-6 text-[14px] leading-[1.9] text-cream/65">
+            <p className="mt-6 text-[14px] leading-[1.9] text-ink-muted">
               Madina Traders is Barabanki&apos;s most trusted name in premium
               doors and hardware. Founded near Shahi Masjid in Begumganj, we
               have spent over 15 years building a reputation on three pillars —
               quality, honesty, and service.
             </p>
-            <p className="mt-4 text-[14px] leading-[1.9] text-cream/65">
+            <p className="mt-4 text-[14px] leading-[1.9] text-ink-muted">
               We stock doors for every need — from simple and sturdy steel doors
               for everyday homes, to ornate luxury arch doors for grand
               residences. Every product in our showroom has been personally
@@ -119,8 +119,8 @@ export default function AboutPage() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-4xl font-light text-white">
-              Our <em className="italic text-gold-light">Values</em>
+            <h2 className="font-display text-4xl font-light text-ink">
+              Our <em className="italic text-green-mid">Values</em>
             </h2>
             <div className="mt-6 flex flex-col gap-5">
               {values.map((v, i) => (
@@ -131,12 +131,12 @@ export default function AboutPage() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="border-l-2 border-gold/40 pl-5"
+                  className="border-l-2 border-green-mid/50 pl-5"
                 >
-                  <div className="mb-1 font-display text-lg text-white">
+                  <div className="mb-1 font-display text-lg text-ink">
                     {v.title}
                   </div>
-                  <div className="text-[12px] leading-relaxed text-muted">
+                  <div className="text-[12px] leading-relaxed text-ink-muted">
                     {v.desc}
                   </div>
                 </motion.div>
@@ -147,7 +147,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="border-t border-gold/10 px-6 py-20 md:px-20">
+      <section className="border-t border-ink/10 bg-gold-bg px-6 py-20 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -155,16 +155,16 @@ export default function AboutPage() {
           viewport={{ once: true }}
           className="mb-14 text-center"
         >
-          <div className="mb-3 flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.35em] text-gold">
-            <span className="h-px w-6 bg-gold" /> Our Journey{" "}
-            <span className="h-px w-6 bg-gold" />
+          <div className="mb-3 flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
+            <span className="h-px w-6 bg-green-mid" /> Our Journey{" "}
+            <span className="h-px w-6 bg-green-mid" />
           </div>
-          <h2 className="font-display text-[clamp(32px,4vw,52px)] font-light text-white">
-            15 Years of <em className="italic text-gold-light">Excellence</em>
+          <h2 className="font-display text-[clamp(32px,4vw,52px)] font-light text-ink">
+            15 Years of <em className="italic text-green-mid">Excellence</em>
           </h2>
         </motion.div>
         <div className="relative mx-auto max-w-2xl">
-          <div className="absolute left-[19px] top-0 h-full w-px bg-gold/20 md:left-1/2" />
+          <div className="absolute left-[19px] top-0 h-full w-px bg-ink/20 md:left-1/2" />
           {timeline.map((t, i) => (
             <motion.div
               key={t.year}
@@ -180,13 +180,13 @@ export default function AboutPage() {
               <div className="flex-1 md:text-right">
                 {i % 2 === 0 && (
                   <div className="hidden md:block">
-                    <div className="font-display text-2xl font-light text-gold">
+                    <div className="font-sans text-2xl font-semibold text-green-mid">
                       {t.year}
                     </div>
-                    <div className="mt-1 font-display text-xl text-white">
+                    <div className="mt-1 font-display text-xl text-ink">
                       {t.title}
                     </div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-muted">
+                    <div className="mt-2 text-[12px] leading-relaxed text-ink-muted">
                       {t.desc}
                     </div>
                   </div>
@@ -198,28 +198,28 @@ export default function AboutPage() {
               </div>
               <div className="flex-1">
                 <div className="md:hidden">
-                  <div className="font-display text-2xl font-light text-gold">
+                  <div className="font-sans text-2xl font-semibold text-green-mid">
                     {t.year}
                   </div>
                 </div>
                 {i % 2 !== 0 ? (
                   <div className="hidden md:block">
-                    <div className="font-display text-2xl font-light text-gold">
+                    <div className="font-sans text-2xl font-semibold text-green-mid">
                       {t.year}
                     </div>
-                    <div className="mt-1 font-display text-xl text-white">
+                    <div className="mt-1 font-display text-xl text-ink">
                       {t.title}
                     </div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-muted">
+                    <div className="mt-2 text-[12px] leading-relaxed text-ink-muted">
                       {t.desc}
                     </div>
                   </div>
                 ) : (
                   <div className="md:hidden">
-                    <div className="font-display text-xl text-white">
+                    <div className="font-display text-xl text-ink">
                       {t.title}
                     </div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-muted">
+                    <div className="mt-2 text-[12px] leading-relaxed text-ink-muted">
                       {t.desc}
                     </div>
                   </div>
@@ -231,7 +231,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA strip */}
-      <section className="border-t border-gold/10 bg-green-base px-6 py-16 md:px-20">
+      <section className="border-t border-ink/10 bg-gold-bg-deep px-6 py-16 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -239,16 +239,16 @@ export default function AboutPage() {
           viewport={{ once: true }}
           className="flex flex-col items-center gap-6 text-center"
         >
-          <h2 className="font-display text-4xl font-light text-white">
-            Come Visit Our <em className="italic text-gold-light">Showroom</em>
+          <h2 className="font-display text-4xl font-light text-ink">
+            Come Visit Our <em className="italic text-green-mid">Showroom</em>
           </h2>
-          <p className="max-w-md text-[13px] leading-relaxed text-muted">
+          <p className="max-w-md text-[13px] leading-relaxed text-ink-muted">
             Near Shahi Masjid, Begumganj, Barabanki. Open Monday to Saturday,
             9am – 7pm.
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-sm bg-gold px-8 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-green-deep transition-colors hover:bg-gold-light"
+            className="inline-flex items-center gap-2 rounded-sm bg-green-deep px-8 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold transition-colors hover:bg-green-base"
           >
             Get Directions →
           </a>

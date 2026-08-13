@@ -11,6 +11,13 @@
   --cream:       #F5F0E8;
   --muted:       #8C978F;
 
+  /* Royal gold, scented with green — used on every section below a hero banner */
+  --gold-bg:      #B89F34;
+  --gold-bg-soft: #C8A836;
+  --gold-bg-deep: #9D8F32;
+  --ink:          #07190D;
+  --ink-muted:    #223220;
+
   --background: var(--green-deep);
   --foreground: var(--cream);
 }
@@ -25,6 +32,11 @@
   --color-gold-dim: var(--gold-dim);
   --color-cream: var(--cream);
   --color-muted: var(--muted);
+  --color-gold-bg: var(--gold-bg);
+  --color-gold-bg-soft: var(--gold-bg-soft);
+  --color-gold-bg-deep: var(--gold-bg-deep);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-display: 'Cormorant Garamond', serif;

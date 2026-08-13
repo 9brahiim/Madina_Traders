@@ -83,7 +83,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-1 gap-16 px-6 py-16 md:grid-cols-2 md:px-20">
+      <section className="grid grid-cols-1 gap-16 bg-gold-bg px-6 py-16 md:grid-cols-2 md:px-20">
         {/* Contact info */}
         <motion.div
           variants={fadeUp}
@@ -91,8 +91,8 @@ export default function ContactPage() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h2 className="font-display text-4xl font-light text-white mb-8">
-            Find <em className="italic text-gold-light">Us</em>
+          <h2 className="font-display text-4xl font-light text-ink mb-8">
+            Find <em className="italic text-green-mid">Us</em>
           </h2>
 
           <div className="flex flex-col gap-6">
@@ -144,18 +144,18 @@ export default function ContactPage() {
           </a>
 
           {/* Hours */}
-          <div className="mt-10 border-t border-gold/10 pt-8">
-            <div className="mb-4 text-[9px] uppercase tracking-[0.28em] text-gold">
+          <div className="mt-10 border-t border-ink/10 pt-8">
+            <div className="mb-4 text-[9px] uppercase tracking-[0.28em] text-green-mid">
               Showroom Hours
             </div>
-            <div className="flex flex-col gap-2 text-[13px] text-muted">
+            <div className="flex flex-col gap-2 text-[13px] text-ink-muted">
               <div className="flex justify-between max-w-xs">
                 <span>Monday – Saturday</span>
-                <span className="text-cream">9:00 AM – 7:00 PM</span>
+                <span className="text-ink">9:00 AM – 7:00 PM</span>
               </div>
               <div className="flex justify-between max-w-xs">
                 <span>Sunday</span>
-                <span className="text-cream">10:00 AM – 4:00 PM</span>
+                <span className="text-ink">10:00 AM – 4:00 PM</span>
               </div>
             </div>
           </div>
@@ -290,8 +290,8 @@ export default function ContactPage() {
 
 function InfoRow({ label, value, icon, color, href }) {
   const content = (
-    <div className="flex items-start gap-4 pb-6 border-b border-gold/10">
-      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-sm border border-gold/15 bg-green-mid/40">
+    <div className="flex items-start gap-4 pb-6 border-b border-ink/10">
+      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-sm border border-gold/15 bg-green-mid">
         <svg
           width="16"
           height="16"
@@ -306,10 +306,10 @@ function InfoRow({ label, value, icon, color, href }) {
         </svg>
       </div>
       <div>
-        <div className="mb-1 text-[9px] uppercase tracking-[0.2em] text-muted">
+        <div className="mb-1 text-[9px] uppercase tracking-[0.2em] text-ink-muted">
           {label}
         </div>
-        <div className="font-display text-lg text-cream whitespace-pre-line">
+        <div className="font-sans text-lg text-ink whitespace-pre-line">
           {value}
         </div>
       </div>

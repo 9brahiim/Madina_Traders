@@ -61,19 +61,19 @@ export default function WarrantyPage() {
       </section>
 
       {/* Warranty badge */}
-      <section className="px-6 py-16 md:px-20">
+      <section className="bg-gold-bg px-6 py-16 md:px-20">
         <div className="flex flex-col items-center gap-6 text-center">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex h-36 w-36 flex-col items-center justify-center rounded-full border-2 border-gold bg-green-mid/30"
+            className="flex h-36 w-36 flex-col items-center justify-center rounded-full border-2 border-gold bg-green-mid"
           >
-            <span className="font-display text-5xl font-light text-gold">
+            <span className="font-sans text-5xl font-semibold text-gold">
               5
             </span>
-            <span className="text-[9px] uppercase tracking-[0.25em] text-muted">
+            <span className="text-[9px] uppercase tracking-[0.25em] text-cream/80">
               Year Warranty
             </span>
           </motion.div>
@@ -83,7 +83,7 @@ export default function WarrantyPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="max-w-xl text-[14px] leading-relaxed text-cream/65"
+            className="max-w-xl text-[14px] leading-relaxed text-ink-muted"
           >
             Every door purchased from Madina Traders comes with a 5-year
             manufacturer warranty on structure, finish, and hardware. We stand
@@ -93,7 +93,7 @@ export default function WarrantyPage() {
       </section>
 
       {/* What's covered */}
-      <section className="border-t border-gold/10 px-6 py-16 md:px-20">
+      <section className="border-t border-ink/10 bg-gold-bg px-6 py-16 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -101,11 +101,11 @@ export default function WarrantyPage() {
           viewport={{ once: true }}
           className="mb-10"
         >
-          <div className="mb-3 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-gold">
-            <span className="h-px w-6 bg-gold" /> Coverage
+          <div className="mb-3 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
+            <span className="h-px w-6 bg-green-mid" /> Coverage
           </div>
-          <h2 className="font-display text-4xl font-light text-white">
-            What&apos;s <em className="italic text-gold-light">Covered</em>
+          <h2 className="font-display text-4xl font-light text-ink">
+            What&apos;s <em className="italic text-green-mid">Covered</em>
           </h2>
         </motion.div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -117,7 +117,7 @@ export default function WarrantyPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex gap-4 rounded-sm border border-gold/15 bg-green-mid/20 p-6 transition-colors hover:border-gold/30"
+              className="flex gap-4 rounded-sm border border-gold/20 bg-green-mid p-6 transition-colors hover:border-gold/40"
             >
               <div className="mt-1 h-5 w-5 flex-shrink-0">
                 <svg
@@ -131,10 +131,10 @@ export default function WarrantyPage() {
                 </svg>
               </div>
               <div>
-                <div className="mb-1 font-display text-lg text-white">
+                <div className="mb-1 font-display text-lg text-cream">
                   {item.title}
                 </div>
-                <div className="text-[12px] leading-relaxed text-muted">
+                <div className="text-[12px] leading-relaxed text-cream/70">
                   {item.desc}
                 </div>
               </div>
@@ -144,7 +144,7 @@ export default function WarrantyPage() {
       </section>
 
       {/* Not covered */}
-      <section className="border-t border-gold/10 px-6 py-16 md:px-20">
+      <section className="border-t border-ink/10 bg-gold-bg px-6 py-16 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -152,8 +152,8 @@ export default function WarrantyPage() {
           viewport={{ once: true }}
           className="mb-8"
         >
-          <h2 className="font-display text-4xl font-light text-white">
-            Not <em className="italic text-gold-light">Covered</em>
+          <h2 className="font-display text-4xl font-light text-ink">
+            Not <em className="italic text-green-mid">Covered</em>
           </h2>
         </motion.div>
         <ul className="flex flex-col gap-3 max-w-xl">
@@ -165,9 +165,9 @@ export default function WarrantyPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex gap-3 text-[13px] text-muted"
+              className="flex gap-3 text-[13px] text-ink-muted"
             >
-              <span className="mt-1 text-gold/50">—</span>
+              <span className="mt-1 text-green-mid/70">—</span>
               {item}
             </motion.li>
           ))}
@@ -175,7 +175,7 @@ export default function WarrantyPage() {
       </section>
 
       {/* Claim process */}
-      <section className="border-t border-gold/10 bg-green-base px-6 py-16 md:px-20">
+      <section className="border-t border-ink/10 bg-gold-bg-deep px-6 py-16 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -183,8 +183,8 @@ export default function WarrantyPage() {
           viewport={{ once: true }}
           className="mb-10 text-center"
         >
-          <h2 className="font-display text-4xl font-light text-white">
-            How to <em className="italic text-gold-light">Claim</em>
+          <h2 className="font-display text-4xl font-light text-ink">
+            How to <em className="italic text-green-mid">Claim</em>
           </h2>
         </motion.div>
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-3">
@@ -214,11 +214,11 @@ export default function WarrantyPage() {
               viewport={{ once: true }}
               className="flex flex-col items-center gap-3 text-center"
             >
-              <div className="font-display text-5xl font-light text-gold/30">
+              <div className="font-sans text-5xl font-semibold text-ink/25">
                 {s.step}
               </div>
-              <div className="font-display text-xl text-white">{s.title}</div>
-              <div className="text-[12px] leading-relaxed text-muted">
+              <div className="font-display text-xl text-ink">{s.title}</div>
+              <div className="text-[12px] leading-relaxed text-ink-muted">
                 {s.desc}
               </div>
             </motion.div>
@@ -227,7 +227,7 @@ export default function WarrantyPage() {
         <div className="mt-12 flex justify-center gap-4">
           <a
             href="tel:+919696243986"
-            className="rounded-sm bg-gold px-8 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-green-deep transition-colors hover:bg-gold-light"
+            className="rounded-sm bg-green-deep px-8 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold transition-colors hover:bg-green-base"
           >
             Call Us
           </a>
@@ -235,7 +235,7 @@ export default function WarrantyPage() {
             href="https://wa.me/919696243986"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm border border-gold/40 px-8 py-3.5 text-[10px] uppercase tracking-[0.22em] text-gold transition-colors hover:border-gold hover:bg-gold/[0.08]"
+            className="rounded-sm border border-ink/40 px-8 py-3.5 text-[10px] uppercase tracking-[0.22em] text-ink transition-colors hover:border-ink hover:bg-ink/[0.08]"
           >
             WhatsApp
           </a>

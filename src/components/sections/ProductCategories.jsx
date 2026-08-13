@@ -14,7 +14,7 @@ export default function ProductCategories() {
   return (
     <section
       id="products"
-      className="bg-green-base px-6 py-24 md:px-20 md:py-28"
+      className="bg-gold-bg-soft px-6 py-24 md:px-20 md:py-28"
     >
       {/* Header */}
       <motion.div
@@ -25,17 +25,17 @@ export default function ProductCategories() {
         className="mb-16 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end"
       >
         <div>
-          <div className="mb-4 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-gold">
-            <span className="h-px w-6 bg-gold" />
+          <div className="mb-4 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
+            <span className="h-px w-6 bg-green-mid" />
             Our Collection
           </div>
-          <h2 className="font-display text-[clamp(32px,4vw,52px)] font-light text-white">
-            Better &amp; <em className="italic text-gold-light">Durable</em>
+          <h2 className="font-display text-[clamp(32px,4vw,52px)] font-light text-ink">
+            Better &amp; <em className="italic text-green-mid">Durable</em>
           </h2>
         </div>
         <a
           href="#"
-          className="flex items-center gap-2 border-b border-gold/30 pb-1 text-[10px] uppercase tracking-[0.2em] text-gold transition-all hover:gap-3.5"
+          className="flex items-center gap-2 border-b border-ink/30 pb-1 text-[10px] uppercase tracking-[0.2em] text-ink transition-all hover:gap-3.5"
         >
           View All Products
           <svg

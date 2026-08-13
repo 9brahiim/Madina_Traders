@@ -6,7 +6,7 @@ import { useModal } from "@/components/ui/ModalProvider";
 
 export function Features() {
   return (
-    <section className="border-t border-gold/10 px-6 py-24 md:px-20 md:py-28">
+    <section className="border-t border-ink/10 bg-gold-bg px-6 py-24 md:px-20 md:py-28">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -14,13 +14,13 @@ export function Features() {
         transition={{ duration: 0.7 }}
         className="text-center"
       >
-        <div className="mb-4 flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.35em] text-gold">
-          <span className="h-px w-6 bg-gold" />
+        <div className="mb-4 flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
+          <span className="h-px w-6 bg-green-mid" />
           Every Door, Every Promise
-          <span className="h-px w-6 bg-gold" />
+          <span className="h-px w-6 bg-green-mid" />
         </div>
-        <h2 className="font-display text-[clamp(32px,4vw,52px)] font-light text-white">
-          What Sets Our Doors <em className="italic text-gold-light">Apart</em>
+        <h2 className="font-display text-[clamp(32px,4vw,52px)] font-light text-ink">
+          What Sets Our Doors <em className="italic text-green-mid">Apart</em>
         </h2>
       </motion.div>
 
@@ -32,7 +32,7 @@ export function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: i * 0.07 }}
-            className="group flex flex-col items-center gap-4 rounded-sm border border-gold/[0.12] px-4 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-gold/35 hover:bg-green-mid/40"
+            className="group flex flex-col items-center gap-4 rounded-sm border border-ink/[0.12] px-4 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-ink/30 hover:bg-green-mid/10"
           >
             {/* Colored SVG icon rendered from string */}
             <div
@@ -40,7 +40,7 @@ export function Features() {
               style={{ color: f.color }}
               dangerouslySetInnerHTML={{ __html: f.icon }}
             />
-            <div className="text-[9px] uppercase leading-[1.5] tracking-[0.18em] text-muted">
+            <div className="text-[9px] uppercase leading-[1.5] tracking-[0.18em] text-ink-muted">
               {f.label}
             </div>
           </motion.div>
@@ -55,7 +55,7 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="grid grid-cols-1 gap-16 border-t border-gold/15 bg-green-base px-6 py-24 md:grid-cols-2 md:gap-20 md:px-20 md:py-28"
+      className="grid grid-cols-1 gap-16 border-t border-ink/15 bg-gold-bg-deep px-6 py-24 md:grid-cols-2 md:gap-20 md:px-20 md:py-28"
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -63,23 +63,23 @@ export function CTA() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7 }}
       >
-        <div className="mb-4 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-gold">
-          <span className="h-px w-6 bg-gold" />
+        <div className="mb-4 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
+          <span className="h-px w-6 bg-green-mid" />
           Get In Touch
         </div>
-        <h2 className="font-display text-[clamp(36px,4.5vw,60px)] font-light leading-[1.08] text-white">
+        <h2 className="font-display text-[clamp(36px,4.5vw,60px)] font-light leading-[1.08] text-ink">
           Let&apos;s Find Your
           <br />
-          <em className="italic text-gold-light">Perfect Door.</em>
+          <em className="italic text-green-mid">Perfect Door.</em>
         </h2>
-        <p className="mt-5 max-w-[440px] text-[13px] leading-[1.9] text-muted">
+        <p className="mt-5 max-w-[440px] text-[13px] leading-[1.9] text-ink-muted">
           Visit our showroom in Barabanki, or reach us directly. Our team is ready to guide
           you through our full collection and help you make the right choice for your home.
         </p>
         <div className="mt-9 flex flex-wrap gap-4">
           <button
             onClick={openModal}
-            className="inline-flex items-center gap-2.5 rounded-sm bg-gold px-8 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-green-deep transition-colors hover:bg-gold-light"
+            className="inline-flex items-center gap-2.5 rounded-sm bg-green-deep px-8 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold transition-colors hover:bg-green-base"
           >
             Quick Enquiry
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -90,7 +90,7 @@ export function CTA() {
             href="https://wa.me/91XXXXXXXXXX"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-sm border border-gold/40 px-8 py-3.5 text-[10px] uppercase tracking-[0.22em] text-gold-light transition-colors hover:border-gold hover:bg-gold/[0.08]"
+            className="inline-flex items-center gap-2.5 rounded-sm border border-ink/40 px-8 py-3.5 text-[10px] uppercase tracking-[0.22em] text-ink transition-colors hover:border-ink hover:bg-ink/[0.08]"
           >
             {/* WhatsApp icon */}
             <svg width="15" height="15" viewBox="0 0 24 24" fill="#C9A84C">
@@ -134,15 +134,15 @@ export function CTA() {
 
 function ContactRow({ label, value, icon, iconColor, last }) {
   return (
-    <div className={`flex items-start gap-4 pb-7 ${last ? "" : "border-b border-gold/10"}`}>
-      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-sm border border-gold/15 bg-green-mid/40">
+    <div className={`flex items-start gap-4 pb-7 ${last ? "" : "border-b border-ink/10"}`}>
+      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-sm border border-gold/15 bg-green-mid">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke={iconColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           {icon}
         </svg>
       </div>
       <div>
-        <div className="mb-1 text-[9px] uppercase tracking-[0.2em] text-muted">{label}</div>
-        <div className="font-display text-lg text-cream">{value}</div>
+        <div className="mb-1 text-[9px] uppercase tracking-[0.2em] text-ink-muted">{label}</div>
+        <div className="font-sans text-lg text-ink">{value}</div>
       </div>
     </div>
   );

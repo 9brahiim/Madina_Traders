@@ -120,7 +120,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Filters */}
-      <section className="sticky top-[76px] z-50 border-b border-gold/10 bg-green-deep/95 px-6 py-4 backdrop-blur-lg md:px-20">
+      <section className="sticky top-[76px] z-50 border-b border-ink/10 bg-gold-bg-deep/95 px-6 py-4 backdrop-blur-lg md:px-20">
         <div className="flex gap-3 overflow-x-auto pb-1">
           {filters.map((f) => (
             <button
@@ -128,8 +128,8 @@ export default function ProductsPage() {
               onClick={() => setActive(f)}
               className={`flex-shrink-0 rounded-sm px-5 py-2 text-[10px] uppercase tracking-[0.18em] transition-all ${
                 active === f
-                  ? "bg-gold text-green-deep font-semibold"
-                  : "border border-gold/25 text-muted hover:border-gold/50 hover:text-cream"
+                  ? "bg-green-deep text-gold font-semibold"
+                  : "border border-ink/25 text-ink-muted hover:border-ink/50 hover:text-ink"
               }`}
             >
               {f}
@@ -139,7 +139,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Grid */}
-      <section className="px-6 py-16 md:px-20">
+      <section className="bg-gold-bg px-6 py-16 md:px-20">
         <motion.div
           layout
           className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"

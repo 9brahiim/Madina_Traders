@@ -21,7 +21,7 @@ function Counter({ target }) {
   }, [inView, target]);
 
   return (
-    <span ref={ref} className="font-display text-[clamp(48px,6vw,84px)] font-light leading-none text-gold">
+    <span ref={ref} className="font-sans text-[clamp(48px,6vw,84px)] font-medium leading-none text-gold">
       {val.toLocaleString()}
       <span className="align-super text-[40px] text-gold-dim">+</span>
     </span>
