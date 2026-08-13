@@ -61,8 +61,8 @@ export default function WarrantyPage() {
       </section>
 
       {/* Warranty badge */}
-      <section className="bg-gold-bg px-6 py-16 md:px-20">
-        <div className="flex flex-col items-center gap-6 text-center">
+      <section className="gold-surface px-6 py-16 md:px-20">
+        <div className="relative z-10 flex flex-col items-center gap-6 text-center">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -93,13 +93,13 @@ export default function WarrantyPage() {
       </section>
 
       {/* What's covered */}
-      <section className="border-t border-ink/10 bg-gold-bg px-6 py-16 md:px-20">
+      <section className="border-t border-ink/10 gold-surface px-6 py-16 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-10"
+          className="relative z-10 mb-10"
         >
           <div className="mb-3 flex items-center gap-4 text-[9px] uppercase tracking-[0.35em] text-green-mid">
             <span className="h-px w-6 bg-green-mid" /> Coverage
@@ -108,7 +108,7 @@ export default function WarrantyPage() {
             What&apos;s <em className="italic text-green-mid">Covered</em>
           </h2>
         </motion.div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="relative z-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {coverageItems.map((item, i) => (
             <motion.div
               key={item.title}
@@ -144,19 +144,19 @@ export default function WarrantyPage() {
       </section>
 
       {/* Not covered */}
-      <section className="border-t border-ink/10 bg-gold-bg px-6 py-16 md:px-20">
+      <section className="border-t border-ink/10 gold-surface px-6 py-16 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-8"
+          className="relative z-10 mb-8"
         >
           <h2 className="font-display text-4xl font-light text-ink">
             Not <em className="italic text-green-mid">Covered</em>
           </h2>
         </motion.div>
-        <ul className="flex flex-col gap-3 max-w-xl">
+        <ul className="relative z-10 flex flex-col gap-3 max-w-xl">
           {notCovered.map((item, i) => (
             <motion.li
               key={i}
@@ -175,19 +175,19 @@ export default function WarrantyPage() {
       </section>
 
       {/* Claim process */}
-      <section className="border-t border-ink/10 bg-gold-bg-deep px-6 py-16 md:px-20">
+      <section className="border-t border-ink/10 gold-surface-deep px-6 py-16 md:px-20">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-10 text-center"
+          className="relative z-10 mb-10 text-center"
         >
           <h2 className="font-display text-4xl font-light text-ink">
             How to <em className="italic text-green-mid">Claim</em>
           </h2>
         </motion.div>
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="relative z-10 mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-3">
           {[
             {
               step: "01",
@@ -224,7 +224,7 @@ export default function WarrantyPage() {
             </motion.div>
           ))}
         </div>
-        <div className="mt-12 flex justify-center gap-4">
+        <div className="relative z-10 mt-12 flex justify-center gap-4">
           <a
             href="tel:+919696243986"
             className="rounded-sm bg-green-deep px-8 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold transition-colors hover:bg-green-base"

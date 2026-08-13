@@ -139,10 +139,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Grid */}
-      <section className="bg-gold-bg px-6 py-16 md:px-20">
+      <section className="gold-surface px-6 py-16 md:px-20">
         <motion.div
           layout
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="relative z-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence>
             {filtered.map((p, i) => (
