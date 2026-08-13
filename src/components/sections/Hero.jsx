@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const PHONE = "919696243986";
 const WA = "919696243986";
+const MAP_LINK = "https://maps.app.goo.gl/81ozopTGjr3PCoM66?g_st=iw";
 
 // Each slide: bg gradient + tagline + door design via SVG
 const slides = [
@@ -15,20 +16,32 @@ const slides = [
     accentText: "Luxury Steel",
   },
   {
-    tagline: "Where Elegance Meets Security",
-    gradient:
-      "radial-gradient(ellipse 70% 90% at 50% 60%, #2a4020 0%, #071a0e 100%)",
-    accentText: "Premium Arch",
-  },
-  {
     tagline: "Grand Entrances, Built to Last",
     gradient:
-      "radial-gradient(ellipse 70% 90% at 50% 60%, #1a3040 0%, #071a0e 100%)",
+      "radial-gradient(ellipse 70% 90% at 50% 60%, #1a3040 0%, #07101a 100%)",
     accentText: "Double Doors",
+  },
+  {
+    tagline: "Quiet Comfort for Every Room",
+    gradient:
+      "radial-gradient(ellipse 70% 90% at 50% 60%, #3a332c 0%, #120f0a 100%)",
+    accentText: "Room Doors",
+  },
+  {
+    tagline: "Style That Handles Everyday Moisture",
+    gradient:
+      "radial-gradient(ellipse 70% 90% at 50% 60%, #0a3a3a 0%, #041515 100%)",
+    accentText: "Bathroom Doors",
+  },
+  {
+    tagline: "Crafted for Family, Built to Welcome",
+    gradient:
+      "radial-gradient(ellipse 70% 90% at 50% 60%, #4a2010 0%, #170a04 100%)",
+    accentText: "Mother Son Doors",
   },
 ];
 
-// Three distinct door SVGs
+// Five distinct door SVGs — one per slide above
 function DoorA() {
   return (
     <svg
@@ -211,141 +224,8 @@ function DoorA() {
   );
 }
 
+// "Double Doors" — twin leaves flanked by panelled sidelights
 function DoorB() {
-  return (
-    <svg
-      viewBox="0 0 300 480"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-    >
-      <defs>
-        <linearGradient id="dB-body" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#2a3a18" />
-          <stop offset="100%" stopColor="#0a1a08" />
-        </linearGradient>
-      </defs>
-      {/* Arched door */}
-      <path
-        d="M8 200 Q8 8 150 8 Q292 8 292 200 L292 472 L8 472 Z"
-        fill="url(#dB-body)"
-        stroke="#C9A84C"
-        strokeWidth="2.5"
-      />
-      <path
-        d="M22 204 Q22 30 150 30 Q278 30 278 204 L278 460 L22 460 Z"
-        fill="none"
-        stroke="#C9A84C"
-        strokeWidth="0.6"
-        strokeOpacity="0.4"
-      />
-      {/* Arch detail lines */}
-      <path
-        d="M50 210 Q50 75 150 75 Q250 75 250 210"
-        fill="none"
-        stroke="#C9A84C"
-        strokeWidth="1"
-        strokeOpacity="0.7"
-      />
-      <path
-        d="M75 215 Q75 105 150 105 Q225 105 225 215"
-        fill="none"
-        stroke="#C9A84C"
-        strokeWidth="0.5"
-        strokeOpacity="0.4"
-      />
-      {/* Fan/sunburst in arch */}
-      {[...Array(9)].map((_, i) => {
-        const angle = -90 + i * 22.5 - 45;
-        const rad = (angle * Math.PI) / 180;
-        const x2 = 150 + 70 * Math.cos(rad);
-        const y2 = 158 + 70 * Math.sin(rad);
-        return (
-          <line
-            key={i}
-            x1="150"
-            y1="158"
-            x2={x2}
-            y2={y2}
-            stroke="#C9A84C"
-            strokeWidth="0.5"
-            strokeOpacity="0.5"
-          />
-        );
-      })}
-      <circle
-        cx="150"
-        cy="158"
-        r="8"
-        fill="none"
-        stroke="#C9A84C"
-        strokeWidth="0.8"
-        strokeOpacity="0.6"
-      />
-      <circle cx="150" cy="158" r="3" fill="#C9A84C" fillOpacity="0.7" />
-      {/* Lower panels */}
-      <rect
-        x="28"
-        y="240"
-        width="116"
-        height="180"
-        rx="2"
-        fill="none"
-        stroke="#C9A84C"
-        strokeWidth="1"
-        strokeOpacity="0.7"
-      />
-      <rect
-        x="40"
-        y="252"
-        width="92"
-        height="156"
-        rx="1"
-        fill="none"
-        stroke="#C9A84C"
-        strokeWidth="0.4"
-        strokeOpacity="0.35"
-      />
-      <rect
-        x="156"
-        y="240"
-        width="116"
-        height="180"
-        rx="2"
-        fill="none"
-        stroke="#C9A84C"
-        strokeWidth="1"
-        strokeOpacity="0.7"
-      />
-      <rect
-        x="168"
-        y="252"
-        width="92"
-        height="156"
-        rx="1"
-        fill="none"
-        stroke="#C9A84C"
-        strokeWidth="0.4"
-        strokeOpacity="0.35"
-      />
-      {/* Center seam */}
-      <line
-        x1="150"
-        y1="240"
-        x2="150"
-        y2="460"
-        stroke="#C9A84C"
-        strokeWidth="0.7"
-        strokeOpacity="0.4"
-      />
-      {/* Handles */}
-      <rect x="124" y="330" width="10" height="40" rx="5" fill="#C9A84C" />
-      <rect x="166" y="330" width="10" height="40" rx="5" fill="#C9A84C" />
-    </svg>
-  );
-}
-
-function DoorC() {
   return (
     <svg
       viewBox="0 0 340 480"
@@ -359,7 +239,6 @@ function DoorC() {
           <stop offset="100%" stopColor="#07101a" />
         </linearGradient>
       </defs>
-      {/* Double door with side lights */}
       {/* Left sidelight */}
       <rect
         x="2"
@@ -536,7 +415,406 @@ function DoorC() {
   );
 }
 
-const doorComponents = [DoorA, DoorB, DoorC];
+// "Room Doors" — quiet, minimalist interior door: one large fluted panel
+// over a small base panel, deliberately different rhythm from the steel door
+function DoorC() {
+  return (
+    <svg
+      viewBox="0 0 300 480"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
+    >
+      <defs>
+        <linearGradient id="dRoom-frame" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#C9A84C" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#8B7035" stopOpacity="0.7" />
+        </linearGradient>
+        <linearGradient id="dRoom-body" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#3a332c" />
+          <stop offset="100%" stopColor="#120f0a" />
+        </linearGradient>
+      </defs>
+      {/* Outer frame */}
+      <rect
+        x="4"
+        y="4"
+        width="292"
+        height="472"
+        rx="3"
+        fill="none"
+        stroke="url(#dRoom-frame)"
+        strokeWidth="3"
+      />
+      <rect
+        x="14"
+        y="14"
+        width="272"
+        height="452"
+        rx="2"
+        fill="url(#dRoom-body)"
+      />
+      {/* One large fluted panel — most of the door's height */}
+      <rect
+        x="28"
+        y="28"
+        width="244"
+        height="300"
+        rx="2"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="1"
+        strokeOpacity="0.75"
+      />
+      <rect
+        x="40"
+        y="40"
+        width="220"
+        height="276"
+        rx="1"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="0.4"
+        strokeOpacity="0.3"
+      />
+      {/* Subtle vertical fluting inside the large panel */}
+      {[58, 83, 108, 133, 158, 183, 208, 233].map((x, i) => (
+        <line
+          key={i}
+          x1={x}
+          y1="50"
+          x2={x}
+          y2="306"
+          stroke="#C9A84C"
+          strokeWidth="0.4"
+          strokeOpacity="0.18"
+        />
+      ))}
+      {/* Small base panel */}
+      <rect
+        x="28"
+        y="342"
+        width="244"
+        height="98"
+        rx="2"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="1"
+        strokeOpacity="0.75"
+      />
+      <rect
+        x="40"
+        y="354"
+        width="220"
+        height="74"
+        rx="1"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="0.4"
+        strokeOpacity="0.3"
+      />
+      {/* Slim lever handle, sitting in the gap between panels */}
+      <rect
+        x="256"
+        y="304"
+        width="10"
+        height="44"
+        rx="5"
+        fill="#C9A84C"
+        fillOpacity="0.85"
+      />
+      <circle cx="261" cy="358" r="6" fill="#C9A84C" fillOpacity="0.6" />
+      {/* Gold dot accent in the gap */}
+      <circle cx="150" cy="332" r="2.5" fill="#C9A84C" fillOpacity="0.7" />
+    </svg>
+  );
+}
+
+// "Bathroom Doors" — frosted / reeded glass upper light + louvered vent below
+function DoorD() {
+  return (
+    <svg
+      viewBox="0 0 300 480"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
+    >
+      <defs>
+        <linearGradient id="dBath-frame" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#C9A84C" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#8B7035" stopOpacity="0.7" />
+        </linearGradient>
+        <linearGradient id="dBath-body" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0a3a3a" />
+          <stop offset="100%" stopColor="#041515" />
+        </linearGradient>
+      </defs>
+      {/* Outer frame */}
+      <rect
+        x="4"
+        y="4"
+        width="292"
+        height="472"
+        rx="3"
+        fill="none"
+        stroke="url(#dBath-frame)"
+        strokeWidth="3"
+      />
+      <rect
+        x="14"
+        y="14"
+        width="272"
+        height="452"
+        rx="2"
+        fill="url(#dBath-body)"
+      />
+      {/* Frosted / reeded glass light */}
+      <rect
+        x="40"
+        y="40"
+        width="220"
+        height="150"
+        rx="2"
+        fill="#C9A84C"
+        fillOpacity="0.06"
+        stroke="#C9A84C"
+        strokeWidth="1"
+        strokeOpacity="0.75"
+      />
+      {[...Array(9)].map((_, i) => (
+        <line
+          key={i}
+          x1={50 + i * 22}
+          y1="48"
+          x2={50 + i * 22}
+          y2="182"
+          stroke="#C9A84C"
+          strokeWidth="0.5"
+          strokeOpacity="0.25"
+        />
+      ))}
+      {/* Mid rail */}
+      <rect
+        x="28"
+        y="206"
+        width="244"
+        height="14"
+        rx="1"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="0.6"
+        strokeOpacity="0.4"
+      />
+      {/* Louvered ventilation panel */}
+      <rect
+        x="40"
+        y="234"
+        width="220"
+        height="130"
+        rx="2"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="1"
+        strokeOpacity="0.75"
+      />
+      {[...Array(7)].map((_, i) => (
+        <line
+          key={i}
+          x1="50"
+          y1={248 + i * 16}
+          x2="250"
+          y2={248 + i * 16}
+          stroke="#C9A84C"
+          strokeWidth="1.4"
+          strokeOpacity="0.55"
+        />
+      ))}
+      {/* Kick panel */}
+      <rect
+        x="28"
+        y="382"
+        width="244"
+        height="58"
+        rx="2"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="1"
+        strokeOpacity="0.6"
+      />
+      {/* Privacy turn-lock + handle */}
+      <circle
+        cx="256"
+        cy="228"
+        r="6"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="1"
+        strokeOpacity="0.8"
+      />
+      <rect
+        x="253"
+        y="238"
+        width="8"
+        height="30"
+        rx="4"
+        fill="#C9A84C"
+        fillOpacity="0.8"
+      />
+    </svg>
+  );
+}
+
+// "Mother Son Doors" — wide main leaf + narrow son leaf, mullioned fanlight above
+function DoorE() {
+  return (
+    <svg
+      viewBox="0 0 320 480"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
+    >
+      <defs>
+        <linearGradient id="dMS-frame" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#C9A84C" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#8B7035" stopOpacity="0.7" />
+        </linearGradient>
+        <linearGradient id="dMS-body" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#4a2010" />
+          <stop offset="100%" stopColor="#170a04" />
+        </linearGradient>
+        <filter id="ms-glow">
+          <feGaussianBlur stdDeviation="3" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      {/* Outer frame */}
+      <rect
+        x="4"
+        y="4"
+        width="312"
+        height="472"
+        rx="3"
+        fill="none"
+        stroke="url(#dMS-frame)"
+        strokeWidth="3"
+      />
+      {/* Fanlight transom */}
+      <rect
+        x="14"
+        y="14"
+        width="292"
+        height="64"
+        rx="1"
+        fill="url(#dMS-body)"
+        stroke="#C9A84C"
+        strokeWidth="0.8"
+        strokeOpacity="0.6"
+      />
+      {[76, 122, 168, 214, 260].map((x, i) => (
+        <line
+          key={i}
+          x1={x}
+          y1="14"
+          x2={x}
+          y2="78"
+          stroke="#C9A84C"
+          strokeWidth="0.5"
+          strokeOpacity="0.35"
+        />
+      ))}
+      {/* Main (mother) leaf */}
+      <rect
+        x="14"
+        y="88"
+        width="200"
+        height="378"
+        rx="2"
+        fill="url(#dMS-body)"
+        stroke="#C9A84C"
+        strokeWidth="2"
+      />
+      <rect
+        x="28"
+        y="104"
+        width="172"
+        height="150"
+        rx="1"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="0.8"
+        strokeOpacity="0.7"
+      />
+      <rect
+        x="28"
+        y="266"
+        width="172"
+        height="182"
+        rx="1"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="0.8"
+        strokeOpacity="0.7"
+      />
+      <rect
+        x="192"
+        y="256"
+        width="10"
+        height="40"
+        rx="5"
+        fill="#C9A84C"
+        filter="url(#ms-glow)"
+      />
+      {/* Son leaf — narrower companion */}
+      <rect
+        x="222"
+        y="88"
+        width="84"
+        height="378"
+        rx="2"
+        fill="url(#dMS-body)"
+        stroke="#C9A84C"
+        strokeWidth="2"
+      />
+      <rect
+        x="234"
+        y="104"
+        width="60"
+        height="150"
+        rx="1"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="0.6"
+        strokeOpacity="0.6"
+      />
+      <rect
+        x="234"
+        y="266"
+        width="60"
+        height="182"
+        rx="1"
+        fill="none"
+        stroke="#C9A84C"
+        strokeWidth="0.6"
+        strokeOpacity="0.6"
+      />
+      {/* Center seam between leaves */}
+      <line
+        x1="218"
+        y1="88"
+        x2="218"
+        y2="466"
+        stroke="#C9A84C"
+        strokeWidth="0.6"
+        strokeOpacity="0.45"
+      />
+    </svg>
+  );
+}
+
+const doorComponents = [DoorA, DoorB, DoorC, DoorD, DoorE];
 
 const stats = [
   { num: "200+", label: "Door Models" },
@@ -712,6 +990,27 @@ export default function Hero() {
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
               </svg>
               WhatsApp Us
+            </a>
+            <a
+              href={MAP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 rounded-sm border border-gold/40 px-7 py-3.5 text-[10px] uppercase tracking-[0.22em] text-gold-light transition-colors hover:border-gold hover:bg-gold/[0.08]"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#C9A84C"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Get Directions
             </a>
           </motion.div>
         </div>

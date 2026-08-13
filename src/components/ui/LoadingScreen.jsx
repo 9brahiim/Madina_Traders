@@ -61,6 +61,33 @@ const doors = [
       { d: "M156,112 L156,122", delay: 2.1 },
     ],
   },
+  {
+    // Mother-son door — a wide primary leaf beside a slimmer secondary leaf,
+    // both set beneath a gentle arched head, with a lever handle on the
+    // mother leaf and a small ring-pull on the son leaf.
+    label: "Mother Son Doors",
+    paths: [
+      {
+        d: "M30,190 L30,60 Q30,15 75,15 L165,15 Q210,15 210,60 L210,190 Z",
+        delay: 0,
+      },
+      { d: "M155,15 L155,190", delay: 0.5 },
+      { d: "M42,178 L42,72 L143,72 L143,178 Z", delay: 0.8 },
+      { d: "M42,110 L143,110", delay: 1.1 },
+      { d: "M42,145 L143,145", delay: 1.2 },
+      { d: "M167,178 L167,72 L198,72 L198,178 Z", delay: 0.9 },
+      { d: "M167,125 L198,125", delay: 1.3 },
+      {
+        d: "M130,120 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0",
+        delay: 1.6,
+      },
+      { d: "M130,124 L130,138", delay: 1.8 },
+      {
+        d: "M182,150 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0",
+        delay: 1.9,
+      },
+    ],
+  },
 ];
 
 // Each door gets 2.8s to fully draw, then 0.4s pause, then next
