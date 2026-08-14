@@ -23,10 +23,10 @@ export default function Footer() {
         <div>
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <LogoMark className="h-16 w-16 flex-shrink-0" />
-            <LogoText className="h-14 w-auto flex-shrink-0" />
+            <LogoMark className="h-11 w-11 flex-shrink-0 md:h-16 md:w-16" />
+            <LogoText className="hidden h-14 w-auto flex-shrink-0 md:block" />
             <div>
-              <div className="font-display text-[20px] font-semibold uppercase tracking-[0.1em] text-gold">
+              <div className="font-display text-[18px] font-semibold uppercase tracking-[0.1em] text-gold md:text-[20px]">
                 Madina Traders
               </div>
               <div className="text-[8px] uppercase tracking-[0.28em] text-muted">

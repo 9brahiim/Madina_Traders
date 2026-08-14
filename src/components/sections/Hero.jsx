@@ -871,8 +871,8 @@ export default function Hero() {
         }}
       />
 
-      {/* DOOR — centre stage, large */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+      {/* DOOR — centre stage, large (desktop/tablet only; on phones it would sit under the text column) */}
+      <div className="pointer-events-none absolute inset-0 hidden items-center justify-center md:flex">
         <AnimatePresence mode="wait">
           <motion.div
             key={`door-${cur}`}
