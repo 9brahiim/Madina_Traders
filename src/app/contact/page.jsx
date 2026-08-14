@@ -151,14 +151,14 @@ export default function ContactPage() {
             href={MAP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center gap-3 rounded-sm border border-gold/40 px-7 py-3.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-light transition-colors hover:border-gold hover:bg-gold/[0.08]"
+            className="mt-3 inline-flex items-center gap-3 rounded-sm border border-ink/40 px-7 py-3.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:border-ink hover:bg-ink/[0.08]"
           >
             <svg
               width="16"
               height="16"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#C9A84C"
+              stroke="#07190D"
               strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
