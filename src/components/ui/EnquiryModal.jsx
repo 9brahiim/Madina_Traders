@@ -113,7 +113,7 @@ export default function EnquiryModal() {
             {/* Gold top bar */}
             <div className="h-[3px] w-full rounded-t-sm bg-gradient-to-r from-gold-dim via-gold to-gold-dim" />
 
-            <div className="p-8 md:p-10">
+            <div className="p-6 md:p-10">
               {/* Close */}
               <button
                 onClick={handleClose}

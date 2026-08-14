@@ -72,8 +72,8 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <LogoMark className="h-14 w-14 flex-shrink-0" />
-          <LogoText className="h-12 w-auto flex-shrink-0" />
+          <LogoMark className="h-10 w-10 flex-shrink-0 md:h-14 md:w-14" />
+          <LogoText className="h-9 w-auto flex-shrink-0 md:h-12" />
         </motion.a>
 
         {/* DESKTOP LINKS */}

@@ -170,7 +170,7 @@ export default function LoadingScreen({ onComplete }) {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.7 }}
-        className="mb-14 text-[13px] uppercase tracking-[0.5em] text-muted"
+        className="mb-14 px-4 text-center text-[12px] uppercase tracking-[0.3em] text-muted md:text-[13px] md:tracking-[0.5em]"
       >
         While You Are Waiting.
       </motion.p>
