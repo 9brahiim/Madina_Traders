@@ -93,6 +93,16 @@ body {
   }
 }
 
+@keyframes call-pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 32px rgba(201, 168, 76, 0.35);
+  }
+  50% {
+    box-shadow: 0 8px 48px rgba(201, 168, 76, 0.6);
+  }
+}
+
 /* ============================================================
    GOLD SURFACE — bright, shiny "actual gold" background used on
    every section below a hero banner.

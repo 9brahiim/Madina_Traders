@@ -164,7 +164,7 @@ export default function AboutPage() {
           </h2>
         </motion.div>
         <div className="relative z-10 mx-auto max-w-2xl">
-          <div className="absolute left-[19px] top-0 h-full w-px bg-ink/20 md:left-1/2" />
+          <div className="absolute left-1/2 top-0 h-full w-px bg-ink/20" />
           {timeline.map((t, i) => (
             <motion.div
               key={t.year}
@@ -173,58 +173,28 @@ export default function AboutPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className={`relative mb-10 flex gap-8 ${
-                i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              className={`relative mb-10 flex items-start gap-4 md:gap-8 ${
+                i % 2 === 0 ? "flex-row" : "flex-row-reverse"
               }`}
             >
-              <div className="flex-1 md:text-right">
-                {i % 2 === 0 && (
-                  <div className="hidden md:block">
-                    <div className="font-sans text-2xl font-semibold text-green-mid">
-                      {t.year}
-                    </div>
-                    <div className="mt-1 font-display text-xl text-ink">
-                      {t.title}
-                    </div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-ink-muted">
-                      {t.desc}
-                    </div>
-                  </div>
-                )}
+              <div
+                className={`flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}
+              >
+                <div className="font-sans text-lg font-semibold text-green-mid md:text-2xl">
+                  {t.year}
+                </div>
+                <div className="mt-1 font-display text-base text-ink md:text-xl">
+                  {t.title}
+                </div>
+                <div className="mt-2 text-[11px] leading-relaxed text-ink-muted md:text-[12px]">
+                  {t.desc}
+                </div>
               </div>
               {/* Dot */}
-              <div className="relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-gold/40 bg-green-base">
+              <div className="relative z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-gold/40 bg-green-base md:h-10 md:w-10">
                 <div className="h-2 w-2 rounded-full bg-gold" />
               </div>
-              <div className="flex-1">
-                <div className="md:hidden">
-                  <div className="font-sans text-2xl font-semibold text-green-mid">
-                    {t.year}
-                  </div>
-                </div>
-                {i % 2 !== 0 ? (
-                  <div className="hidden md:block">
-                    <div className="font-sans text-2xl font-semibold text-green-mid">
-                      {t.year}
-                    </div>
-                    <div className="mt-1 font-display text-xl text-ink">
-                      {t.title}
-                    </div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-ink-muted">
-                      {t.desc}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="md:hidden">
-                    <div className="font-display text-xl text-ink">
-                      {t.title}
-                    </div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-ink-muted">
-                      {t.desc}
-                    </div>
-                  </div>
-                )}
-              </div>
+              <div className="flex-1" />
             </motion.div>
           ))}
         </div>

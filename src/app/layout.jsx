@@ -2,6 +2,8 @@ import "./globals.css";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import CallFloat from "@/components/ui/CallFloat";
+import CatalogueTab from "@/components/ui/CatalogueTab";
 import { ModalProvider } from "@/components/ui/ModalProvider";
 import AppShell from "@/components/ui/AppShell";
 
@@ -30,9 +32,11 @@ export default function RootLayout({ children }) {
         <ModalProvider>
           <AppShell>
             <Navbar />
+            <CatalogueTab />
             <main className="flex-1">{children}</main>
             <Footer />
             <WhatsAppFloat />
+            <CallFloat />
           </AppShell>
         </ModalProvider>
       </body>
