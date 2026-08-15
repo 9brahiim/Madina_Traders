@@ -95,7 +95,7 @@ export default function Footer() {
 
           {/* Socials */}
           <div className="mt-5 flex gap-3">
-            <SocialIcon href="#" aria-label="Facebook">
+            <SocialIcon href="https://www.facebook.com/people/Madina-Traders/61590458296255/" aria-label="Facebook">
               <svg
                 width="14"
                 height="14"
