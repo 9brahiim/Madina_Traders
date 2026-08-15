@@ -98,6 +98,7 @@ const fadeUp = {
 
 export default function ProductsPage() {
   const [active, setActive] = useState("All");
+  const [filterOpen, setFilterOpen] = useState(false);
 
   const filtered =
     active === "All"
@@ -127,7 +128,8 @@ export default function ProductsPage() {
 
       {/* Filters */}
       <section className="sticky top-[76px] z-50 border-b border-ink/10 bg-gold-bg-deep/95 px-6 py-4 backdrop-blur-lg md:px-20">
-        <div className="flex gap-3 overflow-x-auto pb-1">
+        {/* Desktop / tablet — pill row */}
+        <div className="hidden gap-3 md:flex">
           {filters.map((f) => (
             <button
               key={f}
@@ -141,6 +143,96 @@ export default function ProductsPage() {
               {f}
             </button>
           ))}
+        </div>
+
+        {/* Mobile — tap-to-open dropdown selector instead of a horizontal
+            scroll strip; one tap shows every category at once. */}
+        <div className="relative md:hidden">
+          <button
+            onClick={() => setFilterOpen((v) => !v)}
+            aria-expanded={filterOpen}
+            className="flex w-full items-center justify-between rounded-sm border border-ink/25 bg-transparent px-4 py-3 text-[11px] uppercase tracking-[0.16em] text-ink transition-colors active:border-ink/50"
+          >
+            <span className="flex items-center gap-2.5">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+              </svg>
+              {active}
+            </span>
+            <motion.svg
+              animate={{ rotate: filterOpen ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </motion.svg>
+          </button>
+
+          <AnimatePresence>
+            {filterOpen && (
+              <>
+                {/* Tap-outside-to-close backdrop */}
+                <div
+                  className="fixed inset-0 z-40"
+                  onClick={() => setFilterOpen(false)}
+                />
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-sm border border-ink/15 bg-gold-bg-deep shadow-[0_16px_36px_rgba(0,0,0,0.25)]"
+                >
+                  {filters.map((f) => (
+                    <button
+                      key={f}
+                      onClick={() => {
+                        setActive(f);
+                        setFilterOpen(false);
+                      }}
+                      className={`flex w-full items-center justify-between px-4 py-3 text-left text-[11px] uppercase tracking-[0.16em] transition-colors ${
+                        active === f
+                          ? "bg-green-deep font-semibold text-gold"
+                          : "text-ink-muted active:bg-ink/5"
+                      }`}
+                    >
+                      {f}
+                      {active === f && (
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      )}
+                    </button>
+                  ))}
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 

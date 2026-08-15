@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const WEB3FORMS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+const WEB3FORMS_KEY = "ef1359b6-139b-4cd3-b852-542af028c1ee";
 const PHONE1 = "+91 9696243986";
 const PHONE2 = "+91 8090033986";
 const WA = "919696243986";
@@ -129,8 +129,8 @@ export default function ContactPage() {
                 </>
               }
               label="Email"
-              value="info@madinatraders.com"
-              href="mailto:info@madinatraders.com"
+              value="madina.traders.bbk@gmail.com"
+              href="mailto:madina.traders.bbk@gmail.com"
             />
           </div>
 
