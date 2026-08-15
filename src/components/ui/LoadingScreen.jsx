@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const doors = [
+// All available door types. Currently only "Main Entry Doors" and
+// "Mother Son Doors" are shown in the loader (kept short & fast); the other
+// two are left here — unused for now — so we can randomize / re-enable them
+// later without redrawing anything.
+const allDoors = [
   {
     // Simple interior panel door — outer frame, inset leaf, two horizontal
     // rails splitting it into three panels, plus a lever handle.
@@ -90,8 +94,18 @@ const doors = [
   },
 ];
 
-// Each door gets 2.8s to fully draw, then 0.4s pause, then next
-const DOOR_DURATION = 3200; // ms per door
+// Active doors shown in the loader — Main Entry (index 1) and
+// Mother Son (index 3). Swap/extend this to bring the other two back,
+// or shuffle `allDoors` to randomize which ones show.
+const doors = [allDoors[1], allDoors[3]];
+
+// Playback speed multiplier applied to every path's delay/duration below.
+// Lower = faster. At 1 a single door takes ~2.8s to draw; at 0.4 it takes
+// ~1.1s, so 2 doors finish in a little over 2s total.
+const SPEED = 0.4;
+
+// Each door gets ~1.1s to fully draw (scaled by SPEED), then a short pause
+const DOOR_DURATION = Math.round(3200 * SPEED); // ms per door (~1280ms)
 const TOTAL = doors.length * DOOR_DURATION;
 
 function DoorSVG({ door }) {
@@ -112,8 +126,12 @@ function DoorSVG({ door }) {
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 1 }}
           transition={{
-            pathLength: { duration: 0.8, delay: p.delay, ease: "easeInOut" },
-            opacity: { duration: 0.01, delay: p.delay },
+            pathLength: {
+              duration: 0.8 * SPEED,
+              delay: p.delay * SPEED,
+              ease: "easeInOut",
+            },
+            opacity: { duration: 0.01, delay: p.delay * SPEED },
           }}
         />
       ))}
@@ -187,22 +205,6 @@ export default function LoadingScreen({ onComplete }) {
           >
             <DoorSVG door={doors[phase]} />
           </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Door label */}
-      <div className="mt-6 h-12 overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={phase}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -18 }}
-            transition={{ duration: 0.4 }}
-            className="font-display text-[clamp(26px,3vw,36px)] font-light italic text-gold-light text-center"
-          >
-            {doors[phase].label}
-          </motion.p>
         </AnimatePresence>
       </div>
 

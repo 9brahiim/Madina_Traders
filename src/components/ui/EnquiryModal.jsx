@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useModal } from "@/components/ui/ModalProvider";
 
-const WEB3FORMS_KEY = "cd21c7fb-8c5f-4cac-ba98-da4f0cb23dd8"; // <-- replace with key from web3forms.com
+const WEB3FORMS_KEY = "ef1359b6-139b-4cd3-b852-542af028c1ee";
 
 const fields = [
   { name: "name", label: "Your Name", placeholder: "Full name", type: "text" },
