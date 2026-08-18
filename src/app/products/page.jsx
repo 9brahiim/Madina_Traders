@@ -237,7 +237,28 @@ export default function ProductsPage() {
       </section>
 
       {/* Grid */}
-      <section className="gold-surface px-6 py-16 md:px-20">
+      <section className="gold-surface relative overflow-hidden px-6 py-16 md:px-20">
+        {/* Background image swaps in when the Bathroom Doors filter is active */}
+        <AnimatePresence>
+          {active === "Bathroom Doors" && (
+            <motion.div
+              key="bathroom-bg"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 z-0"
+            >
+              <div
+                className="h-full w-full bg-cover bg-center"
+                style={{
+                  backgroundImage: "url(/backimage.jpg)",
+                }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.div
           layout
           className="relative z-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
