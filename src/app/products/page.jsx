@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+import ProductDoodles from "@/components/ui/ProductDoodles";
 
 const allProducts = [
   {
@@ -11,7 +12,7 @@ const allProducts = [
     category: "Room Doors",
     name: "Flush Panel Room Door",
     desc: "Clean single-leaf design with a slim lever handle, built for everyday rooms.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    img: "/images/room-doors/room-door-1.jpg",
   },
   {
     id: 2,
@@ -19,10 +20,58 @@ const allProducts = [
     category: "Room Doors",
     name: "Fluted Wood Room Door",
     desc: "Subtle vertical fluting over a solid core — quiet comfort for every room.",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+    img: "/images/room-doors/room-door-2.jpg",
   },
   {
     id: 3,
+    code: "MT 103",
+    category: "Room Doors",
+    name: "Paneled Room Door",
+    desc: "Traditional raised-panel styling that fits any bedroom or study.",
+    img: "/images/room-doors/room-door-3.jpg",
+  },
+  {
+    id: 4,
+    code: "MT 104",
+    category: "Room Doors",
+    name: "Minimalist Room Door",
+    desc: "Flat, seamless face with a matte finish for a modern, understated look.",
+    img: "/images/room-doors/room-door-4.jpg",
+  },
+  {
+    id: 5,
+    code: "MT 105",
+    category: "Room Doors",
+    name: "Grooved Wood Room Door",
+    desc: "Horizontal groove detailing adds texture without breaking the room's flow.",
+    img: "/images/room-doors/room-door-5.jpg",
+  },
+  {
+    id: 6,
+    code: "MT 106",
+    category: "Room Doors",
+    name: "Laminate Finish Room Door",
+    desc: "Durable laminate skin over a solid core, easy to maintain day to day.",
+    img: "/images/room-doors/room-door-6.jpg",
+  },
+  {
+    id: 7,
+    code: "MT 107",
+    category: "Room Doors",
+    name: "Classic Wood Room Door",
+    desc: "Natural wood grain finish with a timeless, warm character.",
+    img: "/images/room-doors/room-door-7.jpg",
+  },
+  {
+    id: 8,
+    code: "MT 108",
+    category: "Room Doors",
+    name: "Two-Tone Room Door",
+    desc: "Contrasting frame and panel tones for a subtly distinctive room entrance.",
+    img: "/images/room-doors/room-door-8.jpg",
+  },
+  {
+    id: 9,
     code: "MT 201",
     category: "Mother Son Doors",
     name: "Classic Mother Son Door",
@@ -30,7 +79,7 @@ const allProducts = [
     img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
   },
   {
-    id: 4,
+    id: 10,
     code: "MT 202",
     category: "Mother Son Doors",
     name: "Heritage Mother Son Door",
@@ -38,7 +87,7 @@ const allProducts = [
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
   },
   {
-    id: 5,
+    id: 11,
     code: "MT 301",
     category: "Main Entry Doors",
     name: "Grand Entry Door",
@@ -46,7 +95,7 @@ const allProducts = [
     img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
   },
   {
-    id: 6,
+    id: 12,
     code: "MT 302",
     category: "Main Entry Doors",
     name: "Royal Entry Door",
@@ -54,7 +103,7 @@ const allProducts = [
     img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
   },
   {
-    id: 7,
+    id: 13,
     code: "MT 401",
     category: "Main Entry Doors",
     name: "Fortress Entry Door",
@@ -62,20 +111,36 @@ const allProducts = [
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
   },
   {
-    id: 8,
+    id: 14,
     code: "MT 501",
     category: "Bathroom Doors",
     name: "Louvered Bathroom Door",
     desc: "Built-in ventilation louvers keep bathrooms fresh without losing privacy.",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+    img: "/images/bathroom-doors/bathroom-door-1.jpg",
   },
   {
-    id: 9,
+    id: 15,
     code: "MT 502",
     category: "Bathroom Doors",
     name: "Frosted Glass Bathroom Door",
     desc: "Reeded glass upper light lets light in while keeping the room private.",
-    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    img: "/images/bathroom-doors/bathroom-door-2.jpg",
+  },
+  {
+    id: 16,
+    code: "MT 503",
+    category: "Bathroom Doors",
+    name: "PVC Waterproof Bathroom Door",
+    desc: "Fully waterproof construction built to handle daily moisture and steam.",
+    img: "/images/bathroom-doors/bathroom-door-3.jpg",
+  },
+  {
+    id: 17,
+    code: "MT 504",
+    category: "Bathroom Doors",
+    name: "Compact Bathroom Door",
+    desc: "Space-saving slim profile designed for smaller bathroom openings.",
+    img: "/images/bathroom-doors/bathroom-door-4.jpg",
   },
 ];
 
@@ -238,30 +303,11 @@ export default function ProductsPage() {
 
       {/* Grid */}
       <section className="gold-surface relative overflow-hidden px-6 py-16 md:px-20">
-        {/* Background image swaps in when the Bathroom Doors filter is active */}
-        <AnimatePresence>
-          {active === "Bathroom Doors" && (
-            <motion.div
-              key="bathroom-bg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0 z-0"
-            >
-              <div
-                className="h-full w-full bg-cover bg-center"
-                style={{
-                  backgroundImage: "url(/backimage.jpg)",
-                }}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <ProductDoodles />
 
         <motion.div
           layout
-          className="relative z-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="relative z-10 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-5"
         >
           <AnimatePresence>
             {filtered.map((p, i) => (
@@ -276,49 +322,50 @@ export default function ProductsPage() {
               >
                 <CardContainer containerClassName="!p-0 w-full">
                   <CardBody
-                    className="group/card relative w-full rounded-xl border border-gold/[0.15] bg-[#0A2A1A] p-6 hover:shadow-[0_24px_48px_rgba(0,0,0,0.4)]"
-                    style={{ height: 420 }}
+                    className="group/card relative w-full rounded-lg border border-gold/[0.15] bg-[#0A2A1A] p-3.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.4)]"
                   >
+                    <CardItem translateZ="100" className="w-full">
+                      <div className="flex w-full items-center justify-center overflow-hidden rounded-lg bg-black/20">
+                        <img
+                          src={p.img}
+                          alt={p.name}
+                          className="aspect-[9/16] w-full object-contain group-hover/card:shadow-xl"
+                          loading="lazy"
+                        />
+                      </div>
+                    </CardItem>
                     <CardItem
                       translateZ="30"
-                      className="text-[8px] uppercase tracking-[0.28em] text-gold"
+                      className="mt-2.5 text-[7px] uppercase tracking-[0.24em] text-gold"
                     >
                       {p.code}
                     </CardItem>
                     <CardItem
                       translateZ="50"
                       as="h3"
-                      className="mt-1 font-display text-2xl font-normal text-white"
+                      className="mt-0.5 font-display text-base font-normal text-white"
                     >
                       {p.name}
                     </CardItem>
                     <CardItem
                       translateZ="40"
                       as="p"
-                      className="mt-1 text-[11px] leading-relaxed text-muted"
+                      className="mt-0.5 text-[9px] leading-snug text-muted"
                     >
                       {p.desc}
                     </CardItem>
-                    <CardItem translateZ="100" className="mt-4 w-full">
-                      <img
-                        src={p.img}
-                        alt={p.name}
-                        className="h-48 w-full rounded-xl object-cover group-hover/card:shadow-xl"
-                        loading="lazy"
-                      />
-                    </CardItem>
-                    <div className="mt-5 flex items-center justify-between">
+                    <div className="mt-3 flex items-center justify-between">
                       <CardItem
                         translateZ={20}
                         as="span"
-                        className="text-[9px] uppercase tracking-[0.18em] text-gold opacity-0 transition-opacity group-hover/card:opacity-100"
+                        className="text-[7px] uppercase tracking-[0.16em] text-gold opacity-0 transition-opacity group-hover/card:opacity-100"
                       >
                         View Details →
                       </CardItem>
                       <CardItem
                         translateZ={20}
                         as="button"
-                        className="rounded-sm border border-gold/40 px-4 py-2 text-[9px] uppercase tracking-[0.14em] text-gold transition-colors hover:bg-gold hover:text-green-deep"
+                        className="rounded-sm border border-gold/40 px-2.5 py-1.5 text-[7px] uppercase tracking-[0.12em] text-gold transition-colors hover:bg-gold hover:text-green-deep"
                       >
                         Enquire
                       </CardItem>
