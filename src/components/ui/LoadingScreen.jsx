@@ -1,7 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+// useLayoutEffect fires synchronously before the browser paints, so the
+// scroll-lock below applies before the user ever sees a scrollable frame.
+// On the server it falls back to useEffect (a no-op there) to avoid React's
+// "useLayoutEffect does nothing on the server" warning.
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 // All available door types. Currently only "Main Entry Doors" and
 // "Mother Son Doors" are shown in the loader (kept short & fast); the other
@@ -99,6 +106,15 @@ const allDoors = [
 // or shuffle `allDoors` to randomize which ones show.
 const doors = [allDoors[1], allDoors[3]];
 
+// "Hello" greetings cycled Apple-unboxing style — one language at a time,
+// each fading/scaling in and out. Add more entries here to extend the loop;
+// timing auto-adjusts since GREETING_DURATION is derived from TOTAL below.
+const greetings = [
+  { text: "Hello", lang: "English" },
+  { text: "السلام علیکم", lang: "Urdu", rtl: true },
+  { text: "नमस्ते", lang: "Hindi" },
+];
+
 // Playback speed multiplier applied to every path's delay/duration below.
 // Lower = faster. At 1 a single door takes ~2.8s to draw; at 0.4 it takes
 // ~1.1s, so 2 doors finish in a little over 2s total.
@@ -107,6 +123,11 @@ const SPEED = 0.4;
 // Each door gets ~1.1s to fully draw (scaled by SPEED), then a short pause
 const DOOR_DURATION = Math.round(3200 * SPEED); // ms per door (~1280ms)
 const TOTAL = doors.length * DOOR_DURATION;
+
+// Greetings share the same total loading time, split evenly across however
+// many languages are listed above, so the loop always ends right as loading
+// completes regardless of how long TOTAL ends up being.
+const GREETING_DURATION = TOTAL / greetings.length;
 
 function DoorSVG({ door }) {
   return (
@@ -141,16 +162,35 @@ function DoorSVG({ door }) {
 
 export default function LoadingScreen({ onComplete }) {
   const [phase, setPhase] = useState(0);
+  const [greetingPhase, setGreetingPhase] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    // Prevent scrolling behind the loader while it's showing
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+  useIsomorphicLayoutEffect(() => {
+    // Lock scrolling behind the loader — belt-and-braces so it's blocked on
+    // every input (wheel, keyboard, touch drag) and on both html & body,
+    // since iOS Safari sometimes ignores overflow:hidden on body alone.
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyOverscroll = body.style.overscrollBehavior;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.overscrollBehavior = "none";
+
+    // iOS Safari can still let a touch drag scroll/rubber-band the page even
+    // with overflow:hidden set above, so block touchmove directly too.
+    const preventTouch = (e) => e.preventDefault();
+    window.addEventListener("touchmove", preventTouch, { passive: false });
 
     // Advance phase every DOOR_DURATION ms
     const timers = doors.map((_, i) =>
       setTimeout(() => setPhase(i), i * DOOR_DURATION)
+    );
+
+    // Advance greeting language every GREETING_DURATION ms
+    const greetingTimers = greetings.map((_, i) =>
+      setTimeout(() => setGreetingPhase(i), i * GREETING_DURATION)
     );
 
     // Smooth progress bar over total time
@@ -171,27 +211,39 @@ export default function LoadingScreen({ onComplete }) {
 
     return () => {
       timers.forEach(clearTimeout);
+      greetingTimers.forEach(clearTimeout);
       clearInterval(progressTimer);
       clearTimeout(doneTimer);
-      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("touchmove", preventTouch);
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.overscrollBehavior = prevBodyOverscroll;
     };
   }, [onComplete]);
 
   return (
     <motion.div
       className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-green-deep"
+      style={{ touchAction: "none" }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
     >
-      {/* Eyebrow — bigger now */}
-      <motion.p
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.7 }}
-        className="mb-14 px-4 text-center text-[12px] uppercase tracking-[0.3em] text-muted md:text-[13px] md:tracking-[0.5em]"
-      >
-        While You Are Waiting.
-      </motion.p>
+      {/* Greeting — cycles through languages, iPhone-unboxing "Hello" style */}
+      <div className="mb-14 flex h-16 items-center justify-center px-4">
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={greetingPhase}
+            dir={greetings[greetingPhase].rtl ? "rtl" : "ltr"}
+            initial={{ opacity: 0, scale: 0.75 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.15 }}
+            transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+            className="text-center text-3xl font-medium text-gold md:text-4xl"
+          >
+            {greetings[greetingPhase].text}
+          </motion.p>
+        </AnimatePresence>
+      </div>
 
       {/* Door drawing */}
       <div className="relative flex h-52 w-56 items-center justify-center">
