@@ -142,6 +142,38 @@ const allProducts = [
     desc: "Space-saving slim profile designed for smaller bathroom openings.",
     img: "/images/bathroom-doors/bathroom-door-4.jpg",
   },
+  {
+    id: 18,
+    code: "MT 601",
+    category: "Double Doors",
+    name: "Classic Double Door",
+    desc: "Dual-leaf design that opens wide for grand, welcoming entrances.",
+    img: "/images/double-doors/double-door-1.jpg",
+  },
+  {
+    id: 19,
+    code: "MT 602",
+    category: "Double Doors",
+    name: "Security Double Door",
+    desc: "Reinforced twin-leaf construction with multi-point locking for serious protection.",
+    img: "/images/double-doors/double-door-2.jpg",
+  },
+  {
+    id: 20,
+    code: "MT 603",
+    category: "Double Doors",
+    name: "Ornate Double Door",
+    desc: "Detailed panel work across both leaves for a striking, symmetrical facade.",
+    img: "/images/double-doors/double-door-3.jpg",
+  },
+  {
+    id: 21,
+    code: "MT 604",
+    category: "Double Doors",
+    name: "Modern Double Door",
+    desc: "Clean-lined twin leaves finished for a bold, contemporary entrance.",
+    img: "/images/double-doors/double-door-4.jpg",
+  },
 ];
 
 const filters = [
@@ -150,6 +182,7 @@ const filters = [
   "Mother Son Doors",
   "Main Entry Doors",
   "Bathroom Doors",
+  "Double Doors",
 ];
 
 const fadeUp = {
@@ -321,9 +354,7 @@ export default function ProductsPage() {
                 exit={{ opacity: 0, scale: 0.95 }}
               >
                 <CardContainer containerClassName="!p-0 w-full">
-                  <CardBody
-                    className="group/card relative w-full rounded-lg border border-gold/[0.15] bg-[#0A2A1A] p-3.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.4)]"
-                  >
+                  <CardBody className="group/card relative w-full rounded-lg border border-gold/[0.15] bg-[#0A2A1A] p-3.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.4)]">
                     <CardItem translateZ="100" className="w-full">
                       <div className="flex w-full items-center justify-center overflow-hidden rounded-lg bg-black/20">
                         <img
