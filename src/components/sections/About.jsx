@@ -13,14 +13,14 @@ export default function About() {
   return (
     <section
       id="about"
-      className="grid grid-cols-1 gap-10 border-t border-ink/10 gold-surface px-6 py-14 md:grid-cols-2 md:gap-20 md:py-24 md:px-20"
+      className="grid grid-cols-1 gap-10 border-t border-ink/10 gold-surface px-6 py-14 md:grid-cols-[minmax(0,340px)_1fr] md:items-center md:gap-14 md:py-24 md:px-20"
     >
       <motion.div
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-        className="relative z-10 mx-auto w-full max-w-[220px] md:mx-0 md:max-w-[300px]"
+        className="relative z-10 mx-auto w-full max-w-[260px] rounded-md border border-gold/15 bg-green-base/40 p-4 md:mx-0 md:max-w-none md:p-5"
         style={{ filter: "drop-shadow(0 28px 54px rgba(7,25,13,0.28))" }}
       >
         <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-green-mid">
@@ -180,8 +180,8 @@ export default function About() {
             />
           </svg>
         </div>
-        <div className="absolute -bottom-4 -right-4 flex h-20 w-20 flex-col items-center justify-center rounded-full bg-gold shadow-[0_16px_32px_rgba(139,112,53,0.4)] md:-bottom-5 md:-right-5 md:h-28 md:w-28">
-          <strong className="font-sans text-xl font-semibold text-green-deep md:text-3xl">
+        <div className="absolute -bottom-4 -right-4 flex h-20 w-20 flex-col items-center justify-center rounded-full bg-gold shadow-[0_16px_32px_rgba(139,112,53,0.4)] md:-bottom-6 md:-right-6 md:h-24 md:w-24">
+          <strong className="font-sans text-xl font-semibold text-green-deep md:text-2xl">
             15
           </strong>
           <span className="text-[7px] uppercase tracking-[0.15em] text-green-deep md:text-[8px]">
