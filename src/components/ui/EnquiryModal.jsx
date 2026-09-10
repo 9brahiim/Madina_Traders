@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useModal } from "@/components/ui/ModalProvider";
 
@@ -42,7 +42,7 @@ const STATES = {
 };
 
 export default function EnquiryModal() {
-  const { open, closeModal } = useModal();
+  const { open, closeModal, prefill } = useModal();
   const [status, setStatus] = useState(STATES.IDLE);
   const [form, setForm] = useState({
     name: "",
@@ -51,6 +51,16 @@ export default function EnquiryModal() {
     interest: "",
     message: "",
   });
+
+  // Every time the modal is opened, sync the "Door Type Interest" field to
+  // whatever was passed to openModal() — a specific door's PD number when
+  // opened from a product card, or blank when opened from a generic
+  // "Enquire" button elsewhere on the site.
+  useEffect(() => {
+    if (open) {
+      setForm((prev) => ({ ...prev, interest: prefill }));
+    }
+  }, [open, prefill]);
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));

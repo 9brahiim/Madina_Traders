@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { whyUs } from "@/data/site";
+import ProductDoodles from "@/components/ui/ProductDoodles";
 
 const iconPaths = [
   <path key="1" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />,
@@ -18,7 +19,8 @@ const iconPaths = [
 
 export default function WhyUs() {
   return (
-    <section className="border-t border-ink/10 gold-surface px-6 py-24 md:px-20 md:py-28">
+    <section className="relative overflow-hidden border-t border-ink/10 gold-surface px-6 py-24 md:px-20 md:py-28">
+      <ProductDoodles />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

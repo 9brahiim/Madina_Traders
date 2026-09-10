@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import ProductDoodles from "@/components/ui/ProductDoodles";
+import { useModal } from "@/components/ui/ModalProvider";
 
 const allProducts = [
   {
@@ -13,6 +14,7 @@ const allProducts = [
     name: "Flush Panel Room Door",
     desc: "Clean single-leaf design with a slim lever handle, built for everyday rooms.",
     img: "/images/room-doors/room-door-1.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 2,
@@ -21,6 +23,7 @@ const allProducts = [
     name: "Fluted Wood Room Door",
     desc: "Subtle vertical fluting over a solid core — quiet comfort for every room.",
     img: "/images/room-doors/room-door-2.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 3,
@@ -29,6 +32,7 @@ const allProducts = [
     name: "Paneled Room Door",
     desc: "Traditional raised-panel styling that fits any bedroom or study.",
     img: "/images/room-doors/room-door-3.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 4,
@@ -37,6 +41,7 @@ const allProducts = [
     name: "Minimalist Room Door",
     desc: "Flat, seamless face with a matte finish for a modern, understated look.",
     img: "/images/room-doors/room-door-4.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 5,
@@ -45,6 +50,7 @@ const allProducts = [
     name: "Grooved Wood Room Door",
     desc: "Horizontal groove detailing adds texture without breaking the room's flow.",
     img: "/images/room-doors/room-door-5.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 6,
@@ -53,6 +59,7 @@ const allProducts = [
     name: "Laminate Finish Room Door",
     desc: "Durable laminate skin over a solid core, easy to maintain day to day.",
     img: "/images/room-doors/room-door-6.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 7,
@@ -61,6 +68,7 @@ const allProducts = [
     name: "Classic Wood Room Door",
     desc: "Natural wood grain finish with a timeless, warm character.",
     img: "/images/room-doors/room-door-7.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 8,
@@ -69,6 +77,7 @@ const allProducts = [
     name: "Two-Tone Room Door",
     desc: "Contrasting frame and panel tones for a subtly distinctive room entrance.",
     img: "/images/room-doors/room-door-8.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 9,
@@ -76,7 +85,8 @@ const allProducts = [
     category: "Mother Son Doors",
     name: "Classic Mother Son Door",
     desc: "A full-size main leaf paired with a smaller companion leaf for everyday use.",
-    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    img: "/images/motherson-doors/motherson-door1.jpg",
+    sizes: ["2050 X 1200 X 70MM", "2400 X 1200 X 70MM"],
   },
   {
     id: 10,
@@ -84,95 +94,89 @@ const allProducts = [
     category: "Mother Son Doors",
     name: "Heritage Mother Son Door",
     desc: "Ornamental panel work on both leaves, finished with matching hardware.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    img: "/images/motherson-doors/motherson-door2.jpg",
+    sizes: ["2050 X 1200 X 70MM", "2400 X 1200 X 70MM"],
   },
   {
     id: 11,
+    code: "MT 203",
+    category: "Mother Son Doors",
+    name: "Modern Mother Son Door",
+    desc: "Clean flush panels on both leaves for a streamlined double-entry look.",
+    img: "/images/motherson-doors/motherson-door3.jpg",
+    sizes: ["2050 X 1200 X 70MM", "2400 X 1200 X 70MM"],
+  },
+  {
+    id: 12,
+    code: "MT 204",
+    category: "Mother Son Doors",
+    name: "Twin Panel Mother Son Door",
+    desc: "Matching panel detailing across the main and companion leaf.",
+    img: "/images/motherson-doors/motherson-door4.jpg",
+    sizes: ["2050 X 1200 X 70MM", "2400 X 1200 X 70MM"],
+  },
+  {
+    id: 13,
     code: "MT 301",
     category: "Main Entry Doors",
     name: "Grand Entry Door",
     desc: "Wide single-leaf entrance door with a mullioned fanlight transom above.",
     img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
-    id: 12,
+    id: 14,
     code: "MT 302",
     category: "Main Entry Doors",
     name: "Royal Entry Door",
     desc: "Premium steel core with gold-toned hardware for a grand first impression.",
     img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
-    id: 13,
+    id: 15,
     code: "MT 401",
     category: "Main Entry Doors",
     name: "Fortress Entry Door",
     desc: "Reinforced frame with multi-point locking for serious front-door security.",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
-    id: 14,
+    id: 16,
     code: "MT 501",
     category: "Bathroom Doors",
     name: "Louvered Bathroom Door",
     desc: "Built-in ventilation louvers keep bathrooms fresh without losing privacy.",
     img: "/images/bathroom-doors/bathroom-door-1.jpg",
+    sizes: ["2100 X 760MM", "2350 X 760MM"],
   },
   {
-    id: 15,
+    id: 17,
     code: "MT 502",
     category: "Bathroom Doors",
     name: "Frosted Glass Bathroom Door",
     desc: "Reeded glass upper light lets light in while keeping the room private.",
     img: "/images/bathroom-doors/bathroom-door-2.jpg",
+    sizes: ["2100 X 760MM", "2350 X 760MM"],
   },
   {
-    id: 16,
+    id: 18,
     code: "MT 503",
     category: "Bathroom Doors",
     name: "PVC Waterproof Bathroom Door",
     desc: "Fully waterproof construction built to handle daily moisture and steam.",
     img: "/images/bathroom-doors/bathroom-door-3.jpg",
+    sizes: ["2100 X 760MM", "2350 X 760MM"],
   },
   {
-    id: 17,
+    id: 19,
     code: "MT 504",
     category: "Bathroom Doors",
     name: "Compact Bathroom Door",
     desc: "Space-saving slim profile designed for smaller bathroom openings.",
     img: "/images/bathroom-doors/bathroom-door-4.jpg",
-  },
-  {
-    id: 18,
-    code: "MT 601",
-    category: "Double Doors",
-    name: "Classic Double Door",
-    desc: "Dual-leaf design that opens wide for grand, welcoming entrances.",
-    img: "/images/double-doors/double-door-1.jpg",
-  },
-  {
-    id: 19,
-    code: "MT 602",
-    category: "Double Doors",
-    name: "Security Double Door",
-    desc: "Reinforced twin-leaf construction with multi-point locking for serious protection.",
-    img: "/images/double-doors/double-door-2.jpg",
-  },
-  {
-    id: 20,
-    code: "MT 603",
-    category: "Double Doors",
-    name: "Ornate Double Door",
-    desc: "Detailed panel work across both leaves for a striking, symmetrical facade.",
-    img: "/images/double-doors/double-door-3.jpg",
-  },
-  {
-    id: 21,
-    code: "MT 604",
-    category: "Double Doors",
-    name: "Modern Double Door",
-    desc: "Clean-lined twin leaves finished for a bold, contemporary entrance.",
-    img: "/images/double-doors/double-door-4.jpg",
+    sizes: ["2100 X 760MM", "2350 X 760MM"],
   },
 ];
 
@@ -182,7 +186,6 @@ const filters = [
   "Mother Son Doors",
   "Main Entry Doors",
   "Bathroom Doors",
-  "Double Doors",
 ];
 
 const fadeUp = {
@@ -194,9 +197,70 @@ const fadeUp = {
   }),
 };
 
+// Sequential catalogue number shown on each card, independent of category —
+// e.g. id 6 -> "PD 006". Based on id (not filtered-array index) so a door's
+// number stays fixed no matter which category filter is active.
+const pdCode = (id) => `PD ${String(id).padStart(3, "0")}`;
+
+// Renders a product's size list, adapting to how many sizes it has and how
+// long each one is:
+// - Mother Son doors carry three-part dimensions (H x W x thickness), which
+//   are too long to sit side-by-side in the card, so each size gets its own
+//   centered line instead of being paired with a "|" separator.
+// - Everything else is paired two-per-row with "|" between them. An odd
+//   trailing size (e.g. a 3-size door) is centered alone on its own row,
+//   and a 2-size door simply renders as a single row — no empty second row
+//   with a stray "|" left over.
+function SizeList({ product }) {
+  const sizes = product.sizes || [];
+  const stacked = product.category === "Mother Son Doors";
+
+  if (stacked) {
+    return (
+      <>
+        {sizes.map((size, i) => (
+          <p
+            key={i}
+            className="text-center text-[10px] font-bold tracking-wide text-gold sm:text-[11px]"
+          >
+            {size}
+          </p>
+        ))}
+      </>
+    );
+  }
+
+  const rows = [];
+  for (let i = 0; i < sizes.length; i += 2) {
+    rows.push(sizes.slice(i, i + 2));
+  }
+
+  return (
+    <>
+      {rows.map((pair, i) => (
+        <p
+          key={i}
+          className={`text-[11px] font-bold tracking-wide text-gold sm:text-[12px] ${
+            pair.length === 1 ? "text-center" : ""
+          }`}
+        >
+          {pair[0]}
+          {pair.length === 2 && (
+            <>
+              <span className="mx-1.5 text-white/30">|</span>
+              {pair[1]}
+            </>
+          )}
+        </p>
+      ))}
+    </>
+  );
+}
+
 export default function ProductsPage() {
   const [active, setActive] = useState("All");
   const [filterOpen, setFilterOpen] = useState(false);
+  const { openModal } = useModal();
 
   const filtered =
     active === "All"
@@ -354,12 +418,14 @@ export default function ProductsPage() {
                 exit={{ opacity: 0, scale: 0.95 }}
               >
                 <CardContainer containerClassName="!p-0 w-full">
-                  <CardBody className="group/card relative w-full rounded-lg border border-gold/[0.15] bg-[#0A2A1A] p-3.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.4)]">
+                  <CardBody
+                    className="group/card relative w-full rounded-lg border border-gold/[0.15] bg-[#0A2A1A] p-3.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.4)]"
+                  >
                     <CardItem translateZ="100" className="w-full">
                       <div className="flex w-full items-center justify-center overflow-hidden rounded-lg bg-black/20">
                         <img
                           src={p.img}
-                          alt={p.name}
+                          alt={`${p.category} — ${pdCode(p.id)}`}
                           className="aspect-[9/16] w-full object-contain group-hover/card:shadow-xl"
                           loading="lazy"
                         />
@@ -367,40 +433,25 @@ export default function ProductsPage() {
                     </CardItem>
                     <CardItem
                       translateZ="30"
-                      className="mt-2.5 text-[7px] uppercase tracking-[0.24em] text-gold"
+                      className="mt-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-gold"
                     >
-                      {p.code}
-                    </CardItem>
-                    <CardItem
-                      translateZ="50"
-                      as="h3"
-                      className="mt-0.5 font-display text-base font-normal text-white"
-                    >
-                      {p.name}
+                      {pdCode(p.id)}
                     </CardItem>
                     <CardItem
                       translateZ="40"
-                      as="p"
-                      className="mt-0.5 text-[9px] leading-snug text-muted"
+                      as="div"
+                      className="mt-2.5 space-y-1 border-t border-gold/15 pt-2.5"
                     >
-                      {p.desc}
+                      <SizeList product={p} />
                     </CardItem>
-                    <div className="mt-3 flex items-center justify-between">
-                      <CardItem
-                        translateZ={20}
-                        as="span"
-                        className="text-[7px] uppercase tracking-[0.16em] text-gold opacity-0 transition-opacity group-hover/card:opacity-100"
-                      >
-                        View Details →
-                      </CardItem>
-                      <CardItem
-                        translateZ={20}
-                        as="button"
-                        className="rounded-sm border border-gold/40 px-2.5 py-1.5 text-[7px] uppercase tracking-[0.12em] text-gold transition-colors hover:bg-gold hover:text-green-deep"
-                      >
-                        Enquire
-                      </CardItem>
-                    </div>
+                    <CardItem
+                      translateZ={20}
+                      as="button"
+                      onClick={() => openModal(pdCode(p.id))}
+                      className="mt-3 w-full rounded-sm border border-gold/40 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-gold transition-colors hover:bg-gold hover:text-green-deep"
+                    >
+                      Enquire About This Door →
+                    </CardItem>
                   </CardBody>
                 </CardContainer>
               </motion.div>

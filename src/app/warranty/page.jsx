@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ProductDoodles from "@/components/ui/ProductDoodles";
 
 const coverageItems = [
   {
@@ -61,7 +62,8 @@ export default function WarrantyPage() {
       </section>
 
       {/* Warranty badge */}
-      <section className="gold-surface px-6 py-16 md:px-20">
+      <section className="relative overflow-hidden gold-surface px-6 py-16 md:px-20">
+        <ProductDoodles />
         <div className="relative z-10 flex flex-col items-center gap-6 text-center">
           <motion.div
             variants={fadeUp}
@@ -93,7 +95,8 @@ export default function WarrantyPage() {
       </section>
 
       {/* What's covered */}
-      <section className="border-t border-ink/10 gold-surface px-6 py-16 md:px-20">
+      <section className="relative overflow-hidden border-t border-ink/10 gold-surface px-6 py-16 md:px-20">
+        <ProductDoodles />
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -144,7 +147,8 @@ export default function WarrantyPage() {
       </section>
 
       {/* Not covered */}
-      <section className="border-t border-ink/10 gold-surface px-6 py-16 md:px-20">
+      <section className="relative overflow-hidden border-t border-ink/10 gold-surface px-6 py-16 md:px-20">
+        <ProductDoodles />
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -175,7 +179,8 @@ export default function WarrantyPage() {
       </section>
 
       {/* Claim process */}
-      <section className="border-t border-ink/10 gold-surface-deep px-6 py-16 md:px-20">
+      <section className="relative overflow-hidden border-t border-ink/10 gold-surface-deep px-6 py-16 md:px-20">
+        <ProductDoodles />
         <motion.div
           variants={fadeUp}
           initial="hidden"

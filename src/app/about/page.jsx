@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ProductDoodles from "@/components/ui/ProductDoodles";
 
 const timeline = [
   {
@@ -88,7 +89,8 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="gold-surface px-6 py-20 md:px-20">
+      <section className="relative overflow-hidden gold-surface px-6 py-20 md:px-20">
+        <ProductDoodles />
         <div className="relative z-10 grid grid-cols-1 gap-16 md:grid-cols-2">
           <motion.div
             variants={fadeUp}
@@ -147,7 +149,8 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="border-t border-ink/10 gold-surface px-6 py-20 md:px-20">
+      <section className="relative overflow-hidden border-t border-ink/10 gold-surface px-6 py-20 md:px-20">
+        <ProductDoodles />
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -201,7 +204,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA strip */}
-      <section className="border-t border-ink/10 gold-surface-deep px-6 py-16 md:px-20">
+      <section className="relative overflow-hidden border-t border-ink/10 gold-surface-deep px-6 py-16 md:px-20">
+        <ProductDoodles />
         <motion.div
           variants={fadeUp}
           initial="hidden"

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ProductDoodles from "@/components/ui/ProductDoodles";
 
 const WEB3FORMS_KEY = "ef1359b6-139b-4cd3-b852-542af028c1ee";
 const PHONE1 = "+91 9696243986";
@@ -84,7 +85,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-1 gap-16 gold-surface px-6 py-16 md:grid-cols-2 md:px-20">
+      <section className="relative grid grid-cols-1 gap-16 overflow-hidden gold-surface px-6 py-16 md:grid-cols-2 md:px-20">
+        <ProductDoodles />
         {/* Contact info */}
         <motion.div
           variants={fadeUp}

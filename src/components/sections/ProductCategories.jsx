@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { categories } from "@/data/site";
+import ProductDoodles from "@/components/ui/ProductDoodles";
 
 const cardImages = [
   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80",
@@ -14,8 +15,9 @@ export default function ProductCategories() {
   return (
     <section
       id="products"
-      className="gold-surface-soft px-6 py-24 md:px-20 md:py-28"
+      className="relative overflow-hidden gold-surface-soft px-6 py-24 md:px-20 md:py-28"
     >
+      <ProductDoodles />
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}

@@ -3,10 +3,12 @@
 import { motion } from "framer-motion";
 import { features } from "@/data/site";
 import { useModal } from "@/components/ui/ModalProvider";
+import ProductDoodles from "@/components/ui/ProductDoodles";
 
 export function Features() {
   return (
-    <section className="border-t border-ink/10 gold-surface px-6 py-24 md:px-20 md:py-28">
+    <section className="relative overflow-hidden border-t border-ink/10 gold-surface px-6 py-24 md:px-20 md:py-28">
+      <ProductDoodles />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -55,8 +57,9 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="grid grid-cols-1 gap-16 border-t border-ink/15 gold-surface-deep px-6 py-24 md:grid-cols-2 md:gap-20 md:px-20 md:py-28"
+      className="relative grid grid-cols-1 gap-16 overflow-hidden border-t border-ink/15 gold-surface-deep px-6 py-24 md:grid-cols-2 md:gap-20 md:px-20 md:py-28"
     >
+      <ProductDoodles />
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
