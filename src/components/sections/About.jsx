@@ -14,7 +14,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative grid grid-cols-1 gap-10 overflow-hidden border-t border-ink/10 gold-surface px-6 py-14 md:grid-cols-[minmax(0,340px)_1fr] md:items-center md:gap-14 md:py-24 md:px-20"
+      className="relative grid grid-cols-1 gap-10 overflow-hidden border-t border-ink/10 gold-surface px-6 py-14 md:grid-cols-[minmax(0,400px)_1fr] md:items-center md:gap-14 md:py-24 md:px-20"
     >
       <ProductDoodles />
       <motion.div
@@ -22,69 +22,16 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-        className="relative z-10 mx-auto w-full max-w-[260px] rounded-md border border-gold/15 bg-green-base/40 p-4 md:mx-0 md:max-w-none md:p-5"
+        className="relative z-10 mx-auto w-full max-w-[320px] rounded-md border border-gold/15 bg-green-base/40 p-4 md:mx-0 md:max-w-none md:p-5"
         style={{ filter: "drop-shadow(0 28px 54px rgba(7,25,13,0.28))" }}
       >
-        <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-green-mid">
-          <svg
-            viewBox="0 0 400 530"
-            fill="none"
-            className="absolute inset-0 h-full w-full"
-          >
-            <defs>
-              <linearGradient id="ad-body" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#1e6b40" />
-                <stop offset="55%" stopColor="#0f4a2b" />
-                <stop offset="100%" stopColor="#082617" />
-              </linearGradient>
-              <linearGradient id="ad-frame" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#E8D5A3" />
-                <stop offset="50%" stopColor="#C9A84C" />
-                <stop offset="100%" stopColor="#8B7035" />
-              </linearGradient>
-              <linearGradient id="ad-handle" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#F3E3B4" />
-                <stop offset="45%" stopColor="#D8B75A" />
-                <stop offset="100%" stopColor="#8B7035" />
-              </linearGradient>
-            </defs>
-
-            {/* Outer wall/frame lines */}
-            <rect
-              x="30" y="10" width="340" height="520" rx="5"
-              stroke="#C9A84C" strokeWidth="0.5" strokeOpacity="0.3"
-            />
-            <rect
-              x="40" y="20" width="320" height="500" rx="4"
-              stroke="url(#ad-frame)" strokeWidth="2.5"
-            />
-
-            {/* Door body — gradient for real dimensionality */}
-            <rect
-              x="60" y="40" width="280" height="460" rx="3"
-              fill="url(#ad-body)"
-              stroke="url(#ad-frame)"
-              strokeWidth="1.5"
-            />
-
-            {/* Upper panel — nested mouldings for a carved, defined look */}
-            <rect x="85" y="65" width="230" height="212" rx="2" fill="none" stroke="#C9A84C" strokeWidth="1.4" strokeOpacity="0.85" />
-            <rect x="101" y="81" width="198" height="180" rx="1.5" fill="none" stroke="#C9A84C" strokeWidth="0.8" strokeOpacity="0.55" />
-            <rect x="119" y="99" width="162" height="144" rx="1" fill="none" stroke="#C9A84C" strokeWidth="0.5" strokeOpacity="0.35" />
-
-            {/* Mid rail */}
-            <line x1="60" y1="297" x2="340" y2="297" stroke="#C9A84C" strokeWidth="0.6" strokeOpacity="0.3" />
-
-            {/* Lower panel — matching nested mouldings */}
-            <rect x="85" y="316" width="230" height="150" rx="2" fill="none" stroke="#C9A84C" strokeWidth="1.4" strokeOpacity="0.85" />
-            <rect x="101" y="332" width="198" height="118" rx="1.5" fill="none" stroke="#C9A84C" strokeWidth="0.8" strokeOpacity="0.55" />
-
-            {/* Handle — metallic gradient bar + escutcheon */}
-            <rect x="332" y="248" width="15" height="66" rx="7.5" fill="url(#ad-handle)" />
-            <rect x="335" y="253" width="4" height="52" rx="2" fill="#F8ECC9" fillOpacity="0.5" />
-            <circle cx="339.5" cy="330" r="8" fill="url(#ad-handle)" />
-            <circle cx="339.5" cy="330" r="8" fill="none" stroke="#5C4A22" strokeWidth="0.5" strokeOpacity="0.4" />
-          </svg>
+        <div className="relative aspect-[658/735] overflow-hidden rounded-sm bg-green-mid">
+          <img
+            src="/images/about/entrance-door.jpg"
+            alt="Madina Traders carved wooden entrance door with brass fittings"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
         </div>
         <div className="absolute -bottom-4 -right-4 flex h-20 w-20 flex-col items-center justify-center rounded-full bg-gold shadow-[0_16px_32px_rgba(139,112,53,0.4)] md:-bottom-6 md:-right-6 md:h-24 md:w-24">
           <strong className="font-sans text-xl font-semibold text-green-deep md:text-2xl">
@@ -108,7 +55,8 @@ export default function About() {
           Our Story
         </div>
         <h2 className="font-display text-[clamp(32px,4vw,52px)] font-normal leading-[1.1] text-ink">
-          Crafting <em className="italic font-medium text-green-mid">Entrances</em>
+          Crafting{" "}
+          <em className="italic font-medium text-green-mid">Entrances</em>
           <br />
           Since Day One
         </h2>

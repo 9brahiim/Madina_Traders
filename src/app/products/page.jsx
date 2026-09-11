@@ -81,6 +81,15 @@ const allProducts = [
   },
   {
     id: 9,
+    code: "MT 109",
+    category: "Room Doors",
+    name: "Textured Wood Room Door",
+    desc: "Deep wood-grain texture with a rich matte tone for a warm room entrance.",
+    img: "/images/room-doors/room-door-9.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
+  },
+  {
+    id: 10,
     code: "MT 201",
     category: "Mother Son Doors",
     name: "Classic Mother Son Door",
@@ -89,7 +98,7 @@ const allProducts = [
     sizes: ["2050 X 1200 X 70MM", "2400 X 1200 X 70MM"],
   },
   {
-    id: 10,
+    id: 11,
     code: "MT 202",
     category: "Mother Son Doors",
     name: "Heritage Mother Son Door",
@@ -98,7 +107,7 @@ const allProducts = [
     sizes: ["2050 X 1200 X 70MM", "2400 X 1200 X 70MM"],
   },
   {
-    id: 11,
+    id: 12,
     code: "MT 203",
     category: "Mother Son Doors",
     name: "Modern Mother Son Door",
@@ -107,7 +116,7 @@ const allProducts = [
     sizes: ["2050 X 1200 X 70MM", "2400 X 1200 X 70MM"],
   },
   {
-    id: 12,
+    id: 13,
     code: "MT 204",
     category: "Mother Son Doors",
     name: "Twin Panel Mother Son Door",
@@ -116,34 +125,43 @@ const allProducts = [
     sizes: ["2050 X 1200 X 70MM", "2400 X 1200 X 70MM"],
   },
   {
-    id: 13,
+    id: 14,
     code: "MT 301",
     category: "Main Entry Doors",
     name: "Grand Entry Door",
     desc: "Wide single-leaf entrance door with a mullioned fanlight transom above.",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
-    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
-  },
-  {
-    id: 14,
-    code: "MT 302",
-    category: "Main Entry Doors",
-    name: "Royal Entry Door",
-    desc: "Premium steel core with gold-toned hardware for a grand first impression.",
-    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    img: "/images/main-doors/main-door-1.jpg",
     sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 15,
-    code: "MT 401",
+    code: "MT 302",
     category: "Main Entry Doors",
-    name: "Fortress Entry Door",
-    desc: "Reinforced frame with multi-point locking for serious front-door security.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    name: "Royal Entry Door",
+    desc: "Premium steel core with gold-toned hardware for a grand first impression.",
+    img: "/images/main-doors/main-door-2.jpg",
     sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
   },
   {
     id: 16,
+    code: "MT 401",
+    category: "Main Entry Doors",
+    name: "Fortress Entry Door",
+    desc: "Reinforced frame with multi-point locking for serious front-door security.",
+    img: "/images/main-doors/main-door-3.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
+  },
+  {
+    id: 17,
+    code: "MT 303",
+    category: "Main Entry Doors",
+    name: "Heritage Entry Door",
+    desc: "Carved brass detailing across a solid double-leaf entrance.",
+    img: "/images/main-doors/main-door-4.jpg",
+    sizes: ["2050 X 960MM", "2050 X 1050MM", "2400 X 960MM", "2400 X 1050MM"],
+  },
+  {
+    id: 18,
     code: "MT 501",
     category: "Bathroom Doors",
     name: "Louvered Bathroom Door",
@@ -152,7 +170,7 @@ const allProducts = [
     sizes: ["2100 X 760MM", "2350 X 760MM"],
   },
   {
-    id: 17,
+    id: 19,
     code: "MT 502",
     category: "Bathroom Doors",
     name: "Frosted Glass Bathroom Door",
@@ -161,7 +179,7 @@ const allProducts = [
     sizes: ["2100 X 760MM", "2350 X 760MM"],
   },
   {
-    id: 18,
+    id: 20,
     code: "MT 503",
     category: "Bathroom Doors",
     name: "PVC Waterproof Bathroom Door",
@@ -170,7 +188,7 @@ const allProducts = [
     sizes: ["2100 X 760MM", "2350 X 760MM"],
   },
   {
-    id: 19,
+    id: 21,
     code: "MT 504",
     category: "Bathroom Doors",
     name: "Compact Bathroom Door",
@@ -418,9 +436,7 @@ export default function ProductsPage() {
                 exit={{ opacity: 0, scale: 0.95 }}
               >
                 <CardContainer containerClassName="!p-0 w-full">
-                  <CardBody
-                    className="group/card relative w-full rounded-lg border border-gold/[0.15] bg-[#0A2A1A] p-3.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.4)]"
-                  >
+                  <CardBody className="group/card relative w-full rounded-lg border border-gold/[0.15] bg-[#0A2A1A] p-3.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.4)]">
                     <CardItem translateZ="100" className="w-full">
                       <div className="flex w-full items-center justify-center overflow-hidden rounded-lg bg-black/20">
                         <img
