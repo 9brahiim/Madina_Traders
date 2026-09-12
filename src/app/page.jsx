@@ -6,6 +6,11 @@ import WhyUs from "@/components/sections/WhyUs";
 import Stats from "@/components/sections/Stats";
 import { Features, CTA } from "@/components/sections/FeaturesAndCTA";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
+
 export default function Home() {
   return (
     <>
