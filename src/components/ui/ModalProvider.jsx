@@ -19,11 +19,10 @@ export function ModalProvider({ children }) {
         // check because existing call sites do `onClick={openModal}`,
         // which passes the click SyntheticEvent as the first argument —
         // without the guard that event object would land in the field.
-        openModal: (interest) =>
-          {
-            setPrefill(typeof interest === "string" ? interest : "");
-            setOpen(true);
-          },
+        openModal: (interest) => {
+          setPrefill(typeof interest === "string" ? interest : "");
+          setOpen(true);
+        },
         closeModal: () => setOpen(false),
       }}
     >

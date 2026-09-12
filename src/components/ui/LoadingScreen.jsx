@@ -166,40 +166,20 @@ export default function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
 
   useIsomorphicLayoutEffect(() => {
-    // Stop the browser from restoring/adjusting scroll position while the
-    // loader is covering the page — this is what let scroll "sneak in"
-    // during loading even though overflow was hidden: scroll restoration
-    // on reload / back-forward nav can move the document after the loader
-    // has already mounted, and overflow:hidden doesn't prevent that.
-    const prevScrollRestoration = window.history.scrollRestoration;
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-
-    const scrollY = window.scrollY || window.pageYOffset || 0;
+    // Lock scrolling behind the loader — belt-and-braces so it's blocked on
+    // every input (wheel, keyboard, touch drag) and on both html & body,
+    // since iOS Safari sometimes ignores overflow:hidden on body alone.
     const html = document.documentElement;
     const body = document.body;
-
     const prevHtmlOverflow = html.style.overflow;
-    const prevBodyPosition = body.style.position;
-    const prevBodyTop = body.style.top;
-    const prevBodyLeft = body.style.left;
-    const prevBodyRight = body.style.right;
-    const prevBodyWidth = body.style.width;
+    const prevBodyOverflow = body.style.overflow;
     const prevBodyOverscroll = body.style.overscrollBehavior;
-
     html.style.overflow = "hidden";
-    // Taking body out of normal flow with position:fixed is the technique
-    // that actually holds on iOS Safari — overflow:hidden alone still lets
-    // elastic/rubber-band scroll and scroll-restoration leak through.
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.left = "0";
-    body.style.right = "0";
-    body.style.width = "100%";
+    body.style.overflow = "hidden";
     body.style.overscrollBehavior = "none";
 
-    // Extra belt-and-braces: block touch drag directly too.
+    // iOS Safari can still let a touch drag scroll/rubber-band the page even
+    // with overflow:hidden set above, so block touchmove directly too.
     const preventTouch = (e) => e.preventDefault();
     window.addEventListener("touchmove", preventTouch, { passive: false });
 
@@ -236,19 +216,8 @@ export default function LoadingScreen({ onComplete }) {
       clearTimeout(doneTimer);
       window.removeEventListener("touchmove", preventTouch);
       html.style.overflow = prevHtmlOverflow;
-      body.style.position = prevBodyPosition;
-      body.style.top = prevBodyTop;
-      body.style.left = prevBodyLeft;
-      body.style.right = prevBodyRight;
-      body.style.width = prevBodyWidth;
+      body.style.overflow = prevBodyOverflow;
       body.style.overscrollBehavior = prevBodyOverscroll;
-      // Restore exactly where the page was — since body was pinned with
-      // position:fixed, the browser's own scroll position never changed,
-      // so this just puts things back in sync.
-      window.scrollTo(0, scrollY);
-      if ("scrollRestoration" in window.history) {
-        window.history.scrollRestoration = prevScrollRestoration || "auto";
-      }
     };
   }, [onComplete]);
 
