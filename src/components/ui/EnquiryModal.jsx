@@ -39,7 +39,16 @@ const STATES = {
   LOADING: "loading",
   SUCCESS: "success",
   ERROR: "error",
+  INVALID: "invalid",
 };
+
+// Accepts Indian mobile numbers with or without +91/spaces/dashes, and is
+// lenient enough for other country formats (7-15 digits) rather than
+// hard-blocking anyone reaching out from outside India.
+function isValidPhone(value) {
+  const digits = value.replace(/[^\d]/g, "");
+  return digits.length >= 7 && digits.length <= 15;
+}
 
 export default function EnquiryModal() {
   const { open, closeModal, prefill } = useModal();
@@ -50,6 +59,7 @@ export default function EnquiryModal() {
     city: "",
     interest: "",
     message: "",
+    website: "", // honeypot — real users never see or fill this field
   });
 
   // Every time the modal is opened, sync the "Door Type Interest" field to
@@ -64,14 +74,29 @@ export default function EnquiryModal() {
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    // Clear a stale error/invalid message as soon as the person starts
+    // correcting the form, rather than leaving it stuck until resubmit.
+    if (status === STATES.INVALID || status === STATES.ERROR) {
+      setStatus(STATES.IDLE);
+    }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (!form.name || !form.phone) return;
+    // Honeypot: real visitors never see or fill this field (visually hidden
+    // below), so anything here means a bot filled every field automatically.
+    // Silently drop the submission without any visible error, so scripted
+    // bots get no signal that they were caught.
+    if (form.website) return;
+    if (!isValidPhone(form.phone)) {
+      setStatus(STATES.INVALID);
+      return;
+    }
 
     setStatus(STATES.LOADING);
     try {
+      const { website, ...payload } = form;
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -82,13 +107,20 @@ export default function EnquiryModal() {
           access_key: WEB3FORMS_KEY,
           subject: `New Enquiry from ${form.name} — Madina Traders`,
           from_name: "Madina Traders Website",
-          ...form,
+          ...payload,
         }),
       });
       const data = await res.json();
       if (data.success) {
         setStatus(STATES.SUCCESS);
-        setForm({ name: "", phone: "", city: "", interest: "", message: "" });
+        setForm({
+          name: "",
+          phone: "",
+          city: "",
+          interest: "",
+          message: "",
+          website: "",
+        });
       } else {
         setStatus(STATES.ERROR);
       }
@@ -187,6 +219,25 @@ export default function EnquiryModal() {
                       onSubmit={handleSubmit}
                       className="mt-7 flex flex-col gap-4"
                     >
+                      {/* Honeypot — hidden from sighted users and screen
+                          readers alike; bots that auto-fill every input
+                          trip this, and handleSubmit silently drops it. */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
+                      >
+                        <label>
+                          Website
+                          <input
+                            type="text"
+                            name="website"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={form.website}
+                            onChange={handleChange}
+                          />
+                        </label>
+                      </div>
                       {/* Two columns for name + phone */}
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <Field
@@ -228,9 +279,14 @@ export default function EnquiryModal() {
                       </label>
 
                       {status === STATES.ERROR && (
-                        <p className="text-[11px] text-red-400">
+                        <p role="alert" className="text-[11px] text-red-400">
                           Something went wrong. Please try WhatsApp or call us
                           directly.
+                        </p>
+                      )}
+                      {status === STATES.INVALID && (
+                        <p role="alert" className="text-[11px] text-red-400">
+                          Please enter a valid phone number.
                         </p>
                       )}
 
@@ -253,7 +309,7 @@ export default function EnquiryModal() {
                       <p className="text-center text-[10px] text-muted">
                         Or reach us on{" "}
                         <a
-                          href="https://wa.me/91XXXXXXXXXX"
+                          href="https://wa.me/919696243986"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-gold underline-offset-2 hover:underline"

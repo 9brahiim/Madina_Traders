@@ -12,9 +12,15 @@ const iconPaths = [
   </>,
   <>
     <circle key="3a" cx="12" cy="12" r="3" />
-    <path key="3b" d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
+    <path
+      key="3b"
+      d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"
+    />
   </>,
-  <path key="4" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />,
+  <path
+    key="4"
+    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+  />,
 ];
 
 export default function WhyUs() {
@@ -48,11 +54,23 @@ export default function WhyUs() {
             transition={{ duration: 0.5, delay: i * 0.1 }}
             className="border-b border-r border-ink/10 p-8 transition-colors last:border-r-0 hover:bg-green-mid/10 sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0"
           >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mb-5 text-ink">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              className="mb-5 text-ink"
+            >
               {iconPaths[i]}
             </svg>
-            <div className="mb-2 font-display text-xl font-medium text-ink">{item.title}</div>
-            <p className="text-[12px] leading-[1.8] text-ink-muted">{item.desc}</p>
+            <div className="mb-2 font-display text-xl font-medium text-ink">
+              {item.title}
+            </div>
+            <p className="text-[12px] leading-[1.8] text-ink-muted">
+              {item.desc}
+            </p>
           </motion.div>
         ))}
       </div>
