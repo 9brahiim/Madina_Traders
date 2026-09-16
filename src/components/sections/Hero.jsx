@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const PHONE = "919696243986";
-const WA = "919696243986";
+const WA = "918090033986";
 const MAP_LINK = "https://maps.app.goo.gl/81ozopTGjr3PCoM66?g_st=iw";
 
 // Each slide: bg gradient + tagline + door design via SVG

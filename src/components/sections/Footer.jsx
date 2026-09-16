@@ -4,7 +4,7 @@ import LogoText from "@/components/ui/LogoText";
 
 const PHONE1 = "+91 9696243986";
 const PHONE2 = "+91 8090033986";
-const WA = "919696243986";
+const WA = "918090033986";
 
 const productLinks = [
   "Steel Doors",
@@ -95,7 +95,10 @@ export default function Footer() {
 
           {/* Socials */}
           <div className="mt-5 flex gap-3">
-            <SocialIcon href="https://www.facebook.com/people/Madina-Traders/61590458296255/" aria-label="Facebook">
+            <SocialIcon
+              href="https://www.facebook.com/people/Madina-Traders/61590458296255/"
+              aria-label="Facebook"
+            >
               <svg
                 width="14"
                 height="14"

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const LETTERS = "CATALOGUE".split("");
 
@@ -15,8 +16,64 @@ const LETTERS = "CATALOGUE".split("");
 // a slim tab hooked onto the right edge of the screen, vertically
 // centred — each letter still reads upright, just stacked top to bottom.
 export default function CatalogueTab() {
+  // Desktop-only: a small self-dismissing hint bubble that points at the
+  // pill for the first few seconds so first-time visitors notice it.
+  // Skipped on mobile — the stacked tab there is already large/obvious
+  // enough on its own. Runs once per app load (this component lives in
+  // the root layout, so it doesn't remount on client-side navigation).
+  const [showHint, setShowHint] = useState(false);
+
+  useEffect(() => {
+    const showTimer = setTimeout(() => setShowHint(true), 1200);
+    const hideTimer = setTimeout(() => setShowHint(false), 6500);
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
   return (
     <>
+      {/* Desktop-only hint bubble pointing at the pill below */}
+      <AnimatePresence>
+        {showHint && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.96 }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed right-8 top-[134px] z-[94] hidden w-[210px] md:block"
+          >
+            <div className="relative rounded-md border border-gold/40 bg-green-deep px-4 py-3 shadow-[0_16px_32px_rgba(0,0,0,0.45)]">
+              {/* Arrow pointing up at the pill */}
+              <div className="absolute -top-1.5 right-24 h-3 w-3 rotate-45 border-l border-t border-gold/40 bg-green-deep" />
+              <button
+                type="button"
+                onClick={() => setShowHint(false)}
+                aria-label="Dismiss"
+                className="absolute right-1.5 top-1.5 p-1 text-gold/50 transition-colors hover:text-gold"
+              >
+                <svg
+                  width="9"
+                  height="9"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                >
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </button>
+              <p className="pr-3 text-[11px] leading-snug text-cream">
+                <span className="font-semibold text-gold">Tip —</span> click
+                here to download our full door catalogue
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Desktop / tablet — horizontal, hooked under the navbar */}
       <motion.a
         href="/catalogue.pdf"
@@ -26,6 +83,7 @@ export default function CatalogueTab() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.9 }}
         whileHover={{ y: 3 }}
+        onMouseEnter={() => setShowHint(false)}
         className="fixed right-12 top-[76px] z-[95] hidden flex-row items-center gap-2 border border-t-0 border-gold/50 bg-gradient-to-b from-gold-light to-gold px-5 py-3 text-green-deep shadow-[0_10px_24px_rgba(0,0,0,0.35)] transition-shadow hover:shadow-[0_14px_30px_rgba(0,0,0,0.45)] md:flex"
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 78%, 92% 100%, 8% 100%, 0 78%)",
