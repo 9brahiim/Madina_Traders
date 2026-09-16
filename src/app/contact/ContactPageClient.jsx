@@ -8,7 +8,7 @@ import ProductDoodles from "@/components/ui/ProductDoodles";
 const WEB3FORMS_KEY = "ef1359b6-139b-4cd3-b852-542af028c1ee";
 const PHONE1 = "+91 9696243986";
 const PHONE2 = "+91 8090033986";
-const WA = "919696243986";
+const WA = "918090033986";
 const MAP_LINK = "https://maps.app.goo.gl/81ozopTGjr3PCoM66?g_st=iw";
 
 const STATES = {
@@ -209,12 +209,8 @@ export default function ContactPageClient() {
             </div>
             <div className="flex flex-col gap-2 text-[13px] text-ink-muted">
               <div className="flex justify-between max-w-xs">
-                <span>Monday – Saturday</span>
-                <span className="text-ink">9:00 AM – 7:00 PM</span>
-              </div>
-              <div className="flex justify-between max-w-xs">
-                <span>Sunday</span>
-                <span className="text-ink">10:00 AM – 4:00 PM</span>
+                <span>Monday – Sunday</span>
+                <span className="text-ink">10:00 AM – 10:00 PM</span>
               </div>
             </div>
           </div>

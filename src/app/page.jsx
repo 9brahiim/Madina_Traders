@@ -3,7 +3,6 @@ import Marquee from "@/components/sections/Marquee";
 import About from "@/components/sections/About";
 import ProductCategories from "@/components/sections/ProductCategories";
 import WhyUs from "@/components/sections/WhyUs";
-import Stats from "@/components/sections/Stats";
 import { Features, CTA } from "@/components/sections/FeaturesAndCTA";
 
 export const metadata = {
@@ -19,7 +18,6 @@ export default function Home() {
       <About />
       <ProductCategories />
       <WhyUs />
-      <Stats />
       <Features />
       <CTA />
     </>
