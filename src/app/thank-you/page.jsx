@@ -38,7 +38,7 @@ export default function ThankYouPage() {
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
         <a
-          href="https://wa.me/919696243986"
+          href="https://wa.me/918090033986"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 rounded-sm bg-[#25D366] px-7 py-3.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90"

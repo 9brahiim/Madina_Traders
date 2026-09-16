@@ -237,7 +237,7 @@ export default function WarrantyPageClient() {
             Call Us
           </a>
           <a
-            href="https://wa.me/919696243986"
+            href="https://wa.me/918090033986"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-sm border border-ink/40 px-8 py-3.5 text-[10px] uppercase tracking-[0.22em] text-ink transition-colors hover:border-ink hover:bg-ink/[0.08]"
