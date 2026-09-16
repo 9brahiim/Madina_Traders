@@ -36,7 +36,7 @@ export default function ProductCategories() {
           </h2>
         </div>
         <a
-          href="#"
+          href="/products"
           className="flex items-center gap-2 border-b border-ink/30 pb-1 text-[10px] uppercase tracking-[0.2em] text-ink transition-all hover:gap-3.5"
         >
           View All Products
@@ -113,14 +113,15 @@ export default function ProductCategories() {
                   <CardItem
                     translateZ={20}
                     as="a"
-                    href="#"
+                    href="/products"
                     className="text-[11px] uppercase tracking-[0.18em] text-gold transition-opacity hover:opacity-70"
                   >
                     Explore →
                   </CardItem>
                   <CardItem
                     translateZ={20}
-                    as="button"
+                    as="a"
+                    href="/products"
                     className="rounded-lg border border-gold/40 px-4 py-2 text-[10px] uppercase tracking-[0.14em] text-gold transition-colors hover:bg-gold hover:text-green-deep"
                   >
                     View Details

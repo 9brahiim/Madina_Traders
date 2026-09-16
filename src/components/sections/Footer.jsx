@@ -6,14 +6,17 @@ const PHONE1 = "+91 9696243986";
 const PHONE2 = "+91 8090033986";
 const WA = "918090033986";
 
-const productLinks = [
-  "Steel Doors",
-  "Wooden Doors",
-  "Arch Doors",
-  "Double Doors",
-  "Security Doors",
+const productCategories = [
+  "Room Doors",
+  "Mother Son Doors",
+  "Main Entry Doors",
+  "Bathroom Doors",
 ];
-const companyLinks = ["About Us", "Dealership", "Warranty", "Blog", "Contact"];
+const companyLinks = [
+  { label: "About Us", href: "/about" },
+  { label: "Warranty", href: "/warranty" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Footer() {
   return (
@@ -95,10 +98,7 @@ export default function Footer() {
 
           {/* Socials */}
           <div className="mt-5 flex gap-3">
-            <SocialIcon
-              href="https://www.facebook.com/people/Madina-Traders/61590458296255/"
-              aria-label="Facebook"
-            >
+            <SocialIcon href="https://www.facebook.com/people/Madina-Traders/61590458296255/" aria-label="Facebook">
               <svg
                 width="14"
                 height="14"
@@ -138,9 +138,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <FooterCol title="Products" links={productLinks} />
-        <FooterCol title="Company" links={companyLinks} />
-        <FooterCol title="Regions Served" links={regions.slice(0, 8)} />
+        <FooterCol title="Products" items={productCategories} />
+        <FooterCol title="Company" items={companyLinks} />
+        <FooterCol title="Regions Served" items={regions.slice(0, 8)} />
       </div>
 
       {/* Bottom bar */}
@@ -181,23 +181,31 @@ function SocialIcon({ href, children, "aria-label": label }) {
   );
 }
 
-function FooterCol({ title, links }) {
+function FooterCol({ title, items }) {
   return (
     <div>
       <div className="mb-5 text-[9px] uppercase tracking-[0.28em] text-gold">
         {title}
       </div>
       <ul className="flex flex-col gap-3">
-        {links.map((l) => (
-          <li key={l}>
-            <a
-              href="#"
-              className="text-[12px] text-muted transition-colors hover:text-cream"
-            >
-              {l}
-            </a>
-          </li>
-        ))}
+        {items.map((item) => {
+          const isLink = typeof item === "object" && item.href;
+          const label = isLink ? item.label : item;
+          return (
+            <li key={label}>
+              {isLink ? (
+                <a
+                  href={item.href}
+                  className="text-[12px] text-muted transition-colors hover:text-cream"
+                >
+                  {label}
+                </a>
+              ) : (
+                <span className="text-[12px] text-muted">{label}</span>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
