@@ -16,7 +16,7 @@ export const BUSINESS = {
   address: "Near Shahi Masjid, Begumganj, Barabanki, Uttar Pradesh, India",
   phone1: "+91 9696243986",
   phone2: "+91 8090033986",
-  whatsapp: "919696243986",
+  whatsapp: "918090033986",
   email: "madina.traders.bbk@gmail.com",
 };
 

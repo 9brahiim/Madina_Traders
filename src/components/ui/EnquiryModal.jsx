@@ -309,7 +309,7 @@ export default function EnquiryModal() {
                       <p className="text-center text-[10px] text-muted">
                         Or reach us on{" "}
                         <a
-                          href="https://wa.me/919696243986"
+                          href="https://wa.me/918090033986"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-gold underline-offset-2 hover:underline"
