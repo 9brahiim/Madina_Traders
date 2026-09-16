@@ -7,7 +7,7 @@
 // build robots.txt, sitemap.xml, and canonical/Open Graph URLs. Using the
 // wrong domain here won't break the site visually, but search engines will
 // index the wrong URLs and social share previews will link incorrectly.
-export const SITE_URL = "https://www.madinatraders.in";
+export const SITE_URL = "https://madina-traders-ten.vercel.app";
 
 export const SITE_NAME = "Madina Traders";
 
@@ -23,4 +23,4 @@ export const BUSINESS = {
 // ⚠️ Optional: set your GA4 Measurement ID here (looks like "G-XXXXXXXXXX")
 // once you have one. Leave it blank and analytics simply won't load — no
 // broken script tags, no console errors, nothing tracked until you add it.
-export const GA_MEASUREMENT_ID = "";
+export const GA_MEASUREMENT_ID = "G-0Z6Y650D3Z";
